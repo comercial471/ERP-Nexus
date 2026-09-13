@@ -1,4 +1,4 @@
-<title>Nexus em Outubro</title>
+<title>Nexus em Doze Dias</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap">
@@ -135,17 +135,17 @@
 
   <header class="masthead">
     <div class="masthead-top">
-      <div class="wordmark">Nexus em <span>Outubro</span></div>
-      <div class="stamp">Revisão 3 · escopo de lançamento</div>
+      <div class="wordmark">Nexus em <span>doze dias</span></div>
+      <div class="stamp">Revisão 4 · piloto em 25/09</div>
     </div>
-    <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — no ar em seis semanas.</p>
+    <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — com usuários reais usando em <strong>25 de setembro</strong>.</p>
   </header>
 
   <div class="clock">
-    <div class="now"><span class="d">13/09/2026</span><span class="l">Hoje. Repositório vazio, um desenvolvedor</span></div>
-    <div><span class="d">6 semanas</span><span class="l">Tudo que existe entre hoje e o lançamento</span></div>
-    <div><span class="d">31/10/2026</span><span class="l">No ar, com usuário pagante ou piloto formal</span></div>
-    <div><span class="d">2027</span><span class="l">Reforma tributária — fora do escopo agora, mas é por isso que capturar começa já</span></div>
+    <div class="now"><span class="d">HOJE · dom 13</span><span class="l">Abrir a conta Meta Business. É o único caminho crítico que não é código</span></div>
+    <div><span class="d">seg 14 — sex 18</span><span class="l">Semana 1: o cano completo, do WhatsApp ao painel</span></div>
+    <div><span class="d">seg 21 — qui 24</span><span class="l">Semana 2: BIs, Fator R, LGPD mínima</span></div>
+    <div class="now"><span class="d">sex 25/09</span><span class="l">Cinco usuários reais lançando despesa de verdade</span></div>
   </div>
 
   <!-- 01 -->
@@ -299,80 +299,171 @@
   <!-- 05 -->
   <section>
     <div class="sec-head">
-      <span class="eyebrow">05 · Escopo</span>
-      <h2>Seis semanas, contadas de trás para frente</h2>
+      <span class="eyebrow">05 · Cronograma</span>
+      <h2>Doze dias, dia a dia</h2>
     </div>
+
+    <div class="prose" style="margin-bottom:28px">
+      <p>Sobre "isso dá pra fazer em uma tarde": <strong>em grande parte, dá — e eu estava planejando a coisa errada.</strong> Webhook do WhatsApp, foto entrando, modelo com visão devolvendo JSON, linha no Postgres e uma tela com três somatórios é, de fato, uma tarde boa. O cronograma de seis semanas da revisão anterior não media isso; media um produto cobrando assinatura de estranhos, que é outro bicho.</p>
+      <p>São três entregas diferentes, e confundi-las é o que fazia a conta não fechar:</p>
+      <div class="scroller">
+        <table>
+          <thead><tr><th>Entrega</th><th>Prazo real</th><th>O que significa</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Demo</strong></td><td class="num">1 tarde</td><td>Funciona no seu número, com você mandando a foto. Prova que a ideia fecha.</td></tr>
+            <tr class="us"><td class="us"><strong>Piloto</strong></td><td class="num us">25/09</td><td>Cinco donos de negócio de verdade usando na rotina, sem você por perto. Erra às vezes, e tudo bem.</td></tr>
+            <tr><td><strong>Produto</strong></td><td class="num">out/nov</td><td>Desconhecido assina sozinho, paga no cartão, e o suporte não é você no WhatsApp.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O plano abaixo entrega o <strong>piloto</strong> em 25/09. A diferença entre demo e piloto não está no fluxo feliz — está no que acontece quando a foto está tremida, quando o mesmo comprovante chega duas vezes, quando o usuário responde "não, isso foi pessoal", e quando alguém pergunta onde ficam os dados dele.</p>
+      <div class="callout warn">
+        <span class="eyebrow">Comece hoje, e não é codificando</span>
+        <p>Criar o app no Meta Business, gerar a WABA de sandbox e pegar o número de teste. Sem verificação empresarial você já opera com <strong>2 números e 250 conversas por dia</strong> — de sobra para cinco usuários. Mas a verificação leva de <strong>24 horas a 5 dias úteis</strong> quando precisar, e se ela só começar na semana que vem, ela é quem define a data, não o código.</p>
+      </div>
+    </div>
+
     <div class="weeks">
       <div class="week">
-        <div class="week-meta"><span class="wn">Semana 1–2</span><span class="wd">15 — 28 / set</span></div>
+        <div class="week-meta"><span class="wn">Dia 1</span><span class="wd">seg 14/09</span></div>
         <div>
-          <h4>O cano principal</h4>
+          <h4>Encanamento e deploy</h4>
           <ul>
-            <li>WhatsApp Cloud API com webhook, identidade do usuário pelo número de telefone — sem tela de cadastro</li>
-            <li>Recebimento de texto, imagem, áudio e PDF; extração com visão e saída tipada; grau de certeza propagado</li>
-            <li>Postgres gerenciado, modelo de lançamento e de empresa</li>
-            <li><strong>Pronto quando:</strong> você manda a foto de um recibo e ela vira lançamento com resposta em menos de dez segundos</li>
+            <li>Next.js, Postgres gerenciado, repositório, deploy em produção <em>hoje</em> — não na última semana</li>
+            <li>Webhook do WhatsApp recebendo e respondendo eco; usuário identificado pelo número, sem cadastro</li>
+            <li>Tabelas de empresa, lançamento e documento original</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Semana 3</span><span class="wd">29 / set — 5 / out</span></div>
+        <div class="week-meta"><span class="wn">Dia 2</span><span class="wd">ter 15/09</span></div>
+        <div>
+          <h4>Foto vira lançamento</h4>
+          <ul>
+            <li>Imagem, PDF, texto e áudio entram; modelo com visão devolve valor, data, fornecedor, descrição e certeza</li>
+            <li>Original e texto bruto guardados sempre, ao lado do lançamento estruturado</li>
+            <li>Resposta de confirmação com o acumulado do mês</li>
+            <li><strong>Aqui é o fim da "tarde". O resto do cronograma é o que separa isto de um brinquedo.</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 3</span><span class="wd">qua 16/09</span></div>
         <div>
           <h4>Empresa ou pessoal</h4>
           <ul>
-            <li>Classificador com memória de fornecedor — acertou uma vez, acerta sempre</li>
-            <li>Categorias fiscais em vez de categorias de finanças pessoais</li>
-            <li>Agrupamento de dúvidas numa pergunta semanal, com limite rígido de itens</li>
-            <li>Importação de extrato por arquivo (OFX e CSV), com deduplicação contra o que já entrou pelo WhatsApp</li>
+            <li>Classificação com memória de fornecedor: acertou uma vez, acerta sempre</li>
+            <li>Categorias fiscais, não categorias de finanças pessoais</li>
+            <li>Baixa certeza vira pergunta única, nunca fila de revisão</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Semana 4</span><span class="wd">6 — 12 / out</span></div>
+        <div class="week-meta"><span class="wn">Dia 4</span><span class="wd">qui 17/09</span></div>
         <div>
-          <h4>O painel do mês</h4>
+          <h4>Quando dá errado</h4>
           <ul>
-            <li>Web, leitura primeiro: entradas, saídas, saldo, top categorias, top fornecedores</li>
-            <li>Edição e exclusão de lançamento — a única escrita necessária na v1</li>
-            <li>Fechamento mensal enviado por WhatsApp no dia 1º</li>
+            <li>Correção em linguagem natural: "isso foi pessoal", "era 180 não 130", "apaga o último"</li>
+            <li>Deduplicação — o mesmo comprovante fotografado duas vezes não vira dois lançamentos</li>
+            <li>Foto ilegível, valor não encontrado, mensagem que não é despesa: cada um com resposta própria</li>
+            <li><strong>É o dia que a maioria pula, e é o que decide se o piloto sobrevive à primeira semana</strong></li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Semana 5</span><span class="wd">13 — 19 / out</span></div>
+        <div class="week-meta"><span class="wn">Dia 5</span><span class="wd">sex 18/09</span></div>
+        <div>
+          <h4>Painel do mês</h4>
+          <ul>
+            <li>Web só de leitura: entradas, saídas, saldo, lista de lançamentos</li>
+            <li>Acesso por link mágico enviado no WhatsApp — nenhuma senha</li>
+            <li>Edição e exclusão, as únicas escritas da v1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week" style="background:var(--surface-2)">
+        <div class="week-meta"><span class="wn">Sáb e dom</span><span class="wd">19 — 20/09</span></div>
+        <div>
+          <h4>Folga declarada</h4>
+          <ul>
+            <li>Não é reserva de trabalho: é a margem que absorve o dia que vai estourar, e algum dia vai. Um cronograma de doze dias sem folga é um cronograma de dez dias com atraso embutido.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 6</span><span class="wd">seg 21/09</span></div>
+        <div>
+          <h4>Os BIs pequenos</h4>
+          <ul>
+            <li>Evolução mês a mês, top 5 categorias, top fornecedores, comparativo com o mês anterior</li>
+            <li>Despesa da empresa versus pessoal, lado a lado — a tela que justifica o produto</li>
+            <li>Exportação em CSV</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 7</span><span class="wd">ter 22/09</span></div>
         <div>
           <h4>Fator R</h4>
           <ul>
-            <li>Entrada de receita e de retiradas dos 12 meses, com atalho para quem não tem histórico no sistema</li>
+            <li>Entrada de receita e retiradas dos 12 meses, com atalho para quem não tem histórico</li>
             <li>Cálculo, comparação de anexos e o número em reais</li>
-            <li>Tabela de CNAEs sujeitos ao Fator R e avisos de limite bem visíveis</li>
-            <li>Relatório compartilhável — é o que o dono manda para o contador dele, e é o nosso canal de aquisição de graça</li>
+            <li>Lista curada de CNAEs sujeitos ao Fator R — curada à mão, não gerada por modelo</li>
+            <li>Avisos de limite na própria tela: 12 meses móveis, e a decisão é do contador</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Semana 6</span><span class="wd">20 — 31 / out</span></div>
+        <div class="week-meta"><span class="wn">Dia 8</span><span class="wd">qua 23/09</span></div>
         <div>
-          <h4>Cobrar e abrir</h4>
+          <h4>Relatório que sai de casa</h4>
           <ul>
-            <li>Assinatura e cobrança recorrente por Pix e cartão; teste grátis por tempo, não por volume</li>
-            <li>Telemetria do que importa: tempo até o primeiro lançamento, taxa de acerto da classificação, retenção na segunda semana</li>
-            <li>Página de entrada e 10 a 20 usuários reais, recrutados à mão</li>
+            <li>Link público de leitura com o cálculo do Fator R, para o dono mandar ao contador</li>
+            <li>Resumo do mês enviado por WhatsApp — primeira mensagem proativa, e primeiro custo por mensagem</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 9</span><span class="wd">qui 24/09</span></div>
+        <div>
+          <h4>O que não dá para pedir desculpa depois</h4>
+          <ul>
+            <li>Consentimento no primeiro contato, política de privacidade, exclusão de conta funcionando de verdade</li>
+            <li>Teto de uso por usuário e proteção contra abuso — a conta do modelo é sua</li>
+            <li>Telemetria do que importa: tempo até o primeiro lançamento, taxa de acerto da classificação, retorno no dia seguinte</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 10</span><span class="wd">sex 25/09</span></div>
+        <div>
+          <h4>Entrega</h4>
+          <ul>
+            <li>Cinco donos de negócio recrutados à mão, colocados para dentro um a um</li>
+            <li>Cobrança <strong>manual, por Pix</strong> ou nenhuma durante o piloto — assinatura automática não é problema de setembro</li>
+            <li>Você acompanhando cada conversa no primeiro fim de semana</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="prose" style="margin-top:28px">
-      <h3>O que fica de fora, sem negociação</h3>
+      <h3>O que sai do escopo para a data caber</h3>
     </div>
     <div class="cut">
-      <div><b>Open Finance</b>Custo fixo alto antes de haver receita. Extrato por arquivo resolve a v1.</div>
-      <div><b>Emissão de nota</b>Homologação e suporte contínuo. Não entra em 2026.</div>
-      <div><b>Certificado digital</b>Risco de custódia sem contrapartida nesta fase.</div>
-      <div><b>Contas a pagar e agendamento</b>Vira produto de fluxo, não de registro. Depois.</div>
-      <div><b>Multiusuário e permissões</b>O cliente é uma pessoa só. Literalmente.</div>
-      <div><b>Estoque, folha, NF-e de entrada</b>Nada disso é o problema de quem está no caderno.</div>
+      <div><b>Cobrança automática</b>Pix na mão durante o piloto. Cartão e recorrência em outubro.</div>
+      <div><b>Importação de extrato</b>OFX e CSV ficam para outubro. Em setembro, só WhatsApp.</div>
+      <div><b>Open Finance</b>Custo fixo alto e fricção no onboarding. Depois de haver receita.</div>
+      <div><b>Cadastro sozinho</b>Os cinco primeiros entram na mão. Autoatendimento em outubro.</div>
+      <div><b>Verificação empresarial</b>Só se a Meta exigir. 250 conversas por dia bastam para cinco usuários.</div>
+      <div><b>Emissão de nota, estoque, contas a pagar</b>Nada disso é o problema de quem está no caderno.</div>
+    </div>
+
+    <div class="prose" style="margin-top:24px">
+      <div class="callout">
+        <span class="eyebrow">A regra que faz a data valer</span>
+        <p>Se algum dia estourar, o que cai é o <strong>dia 6</strong> — os BIs pequenos podem virar três somatórios numa tabela sem perder o piloto. O que nunca cai é o <strong>dia 4</strong>, porque erro sem conserto expulsa usuário, e o <strong>dia 7</strong>, porque é a única parte que a concorrência não copia numa tarde.</p>
+      </div>
     </div>
   </section>
 
@@ -395,10 +486,10 @@
   <section>
     <div class="sec-head">
       <span class="eyebrow">07 · Preço</span>
-      <h2>R$ 39 por mês, e por que não é de graça</h2>
+      <h2>R$ 39 por mês, a partir de outubro</h2>
     </div>
     <div class="prose">
-      <p>Preço único, <strong>R$ 39 por mês ou R$ 390 no ano</strong>, com teste grátis de 14 dias. Sem plano gratuito permanente: cada documento processado tem custo de modelo, e plano grátis num produto de IA com um dev só é como se financia o próprio fechamento.</p>
+      <p>Isto vale para o produto de outubro — <strong>no piloto de setembro a cobrança é manual ou inexistente</strong>, e o que se compra dos cinco primeiros é conversa, não receita. Preço único, <strong>R$ 39 por mês ou R$ 390 no ano</strong>, com teste grátis de 14 dias. Sem plano gratuito permanente: cada documento processado tem custo de modelo, e plano grátis num produto de IA com um dev só é como se financia o próprio fechamento.</p>
       <p>A âncora não é o concorrente — é o que o cliente já paga. Contabilidade online começa acima de R$ 150 por mês. Um ERP de PME começa em R$ 166 e vai a R$ 1.800. Hoje ele paga zero e usa caderno. R$ 39 é a faixa em que a decisão não precisa passar por planilha de comparação.</p>
       <p>O relatório de Fator R é o que quebra a objeção do preço: quando o número aparece em reais, a assinatura deixa de ser custo e vira a coisa mais barata da tela.</p>
       <p><strong>Aquisição sem verba:</strong> o relatório compartilhável é o veículo. O dono manda para o contador; o contador vê a conta pronta, bem-feita e com o dispositivo citado. Alguns vão querer para a carteira inteira — e aí o canal contábil, que era a hipótese da revisão anterior deste documento, volta pela porta de trás, validado por uso em vez de por reunião comercial.</p>
@@ -414,8 +505,8 @@
     <div class="risks">
       <div class="risk">
         <span class="sev alta">Alta</span>
-        <span class="r">Seis semanas é pouco, e escopo cresce sozinho</span>
-        <span class="m">O cronograma só fecha se nada entrar. A regra: qualquer ideia nova vai para a lista da v2 sem discussão até 31 de outubro. Se a semana 5 atrasar, corta o painel web — não o Fator R, que é a única parte insubstituível.</span>
+        <span class="r">Doze dias não perdoam nada</span>
+        <span class="m">Não há folga além do fim de semana declarado. Qualquer ideia nova vai para a lista de outubro sem discussão. E o risco não é o código: é a fila da Meta, que não responde a esforço. Por isso a conta abre hoje, domingo, antes da primeira linha.</span>
       </div>
       <div class="risk">
         <span class="sev alta">Alta</span>
@@ -435,7 +526,7 @@
       <div class="risk">
         <span class="sev media">Média</span>
         <span class="r">Dependência de plataforma</span>
-        <span class="m">Meta muda preço e política do WhatsApp com frequência, e já mudou o modelo de cobrança em janeiro de 2026. Mitigação: manter a lógica fora da camada de mensageria desde o começo, para que Telegram, SMS ou app próprio sejam troca de adaptador.</span>
+        <span class="m">Meta muda preço e política do WhatsApp com frequência, já mudou o modelo de cobrança em janeiro de 2026, e sem verificação empresarial a conta é cancelada se passar de 250 conversas diárias por 15 dias. Mitigação: manter a lógica fora da camada de mensageria desde o começo, para que Telegram, SMS ou app próprio sejam troca de adaptador.</span>
       </div>
       <div class="risk">
         <span class="sev media">Média</span>
@@ -477,10 +568,12 @@
       <a href="https://www.tabnews.com.br/GuilhermeVieira/estou-desenvolvendo-um-app-de-financas-pessoais-e-nao-consigo-pagar-o-open-finance-pluggy-r2-5k-mes-belvo-r6k-mes-tecnospeed-r1-5k-de-entrada-r540">Custo real de Open Finance para quem está começando</a>
       <a href="https://www.socialhub.pro/blog/preco-whatsapp-api-2026-brasil/">Preço da WhatsApp Business API no Brasil em 2026</a>
       <a href="https://blog.geekacademy.site/blog/whatsapp-business-api-custo-brasil">Tabela de custo da WhatsApp Business API</a>
+      <a href="https://iadobrasil.com/whatsapp-cloud-api-sem-bsp-guia-2026/">WhatsApp Cloud API sem BSP — limites de número e de conversas</a>
+      <a href="https://jetchat.com.br/whatsapp-business-api-e-cloud/instalacao-whatsapp-cloud-api/">Configuração da Cloud API e prazos de verificação empresarial</a>
     </div>
   </section>
 
   <footer>
-    Revisão 3 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
+    Revisão 4 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
   </footer>
 </div>
