@@ -1,4 +1,4 @@
-<title>Nexus em Doze Dias</title>
+<title>Nexus em Três Dias</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap">
@@ -135,17 +135,17 @@
 
   <header class="masthead">
     <div class="masthead-top">
-      <div class="wordmark">Nexus em <span>doze dias</span></div>
-      <div class="stamp">Revisão 5 · piloto em 25/09</div>
+      <div class="wordmark">Nexus em <span>três dias</span></div>
+      <div class="stamp">Revisão 6 · Evolution API</div>
     </div>
-    <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — com usuários reais usando em <strong>25 de setembro</strong>.</p>
+    <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — construído sobre Evolution API em <strong>três dias</strong>, com piloto rodando bem antes de 25 de setembro.</p>
   </header>
 
   <div class="clock">
-    <div class="now"><span class="d">HOJE · dom 13</span><span class="l">Abrir a conta Meta Business. É o único caminho crítico que não é código</span></div>
-    <div><span class="d">seg 14 — sex 18</span><span class="l">Semana 1: o cano completo, do WhatsApp ao painel</span></div>
-    <div><span class="d">seg 21 — qui 24</span><span class="l">Semana 2: BIs, Fator R, LGPD mínima. Zero integração com banco</span></div>
-    <div class="now"><span class="d">sex 25/09</span><span class="l">Cinco usuários reais lançando despesa de verdade</span></div>
+    <div class="now"><span class="d">HOJE · dom 13</span><span class="l">Subir a Evolution e escanear o QR. Nada aqui depende de terceiros</span></div>
+    <div><span class="d">seg 14 — qua 16</span><span class="l">Três dias: o controle inteiro funcionando</span></div>
+    <div><span class="d">qui 17</span><span class="l">Fator R, o diferencial</span></div>
+    <div class="now"><span class="d">18 — 25/09</span><span class="l">Piloto com cinco donos de negócio, com folga na data</span></div>
   </div>
 
   <!-- 01 -->
@@ -302,171 +302,201 @@
   <section>
     <div class="sec-head">
       <span class="eyebrow">05 · Cronograma</span>
-      <h2>Doze dias, dia a dia</h2>
+      <h2>Três dias, em blocos de duas horas</h2>
     </div>
 
     <div class="prose" style="margin-bottom:28px">
-      <p>Sobre "isso dá pra fazer em uma tarde": <strong>em grande parte, dá — e eu estava planejando a coisa errada.</strong> Webhook do WhatsApp, foto entrando, modelo com visão devolvendo JSON, linha no Postgres e uma tela com três somatórios é, de fato, uma tarde boa. O cronograma de seis semanas da revisão anterior não media isso; media um produto cobrando assinatura de estranhos, que é outro bicho.</p>
-      <p>São três entregas diferentes, e confundi-las é o que fazia a conta não fechar:</p>
-      <div class="scroller">
-        <table>
-          <thead><tr><th>Entrega</th><th>Prazo real</th><th>O que significa</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Demo</strong></td><td class="num">1 tarde</td><td>Funciona no seu número, com você mandando a foto. Prova que a ideia fecha.</td></tr>
-            <tr class="us"><td class="us"><strong>Piloto</strong></td><td class="num us">25/09</td><td>Cinco donos de negócio de verdade usando na rotina, sem você por perto. Erra às vezes, e tudo bem.</td></tr>
-            <tr><td><strong>Produto</strong></td><td class="num">out/nov</td><td>Desconhecido assina sozinho, paga no cartão, e o suporte não é você no WhatsApp.</td></tr>
-          </tbody>
-        </table>
+      <p>A Evolution API muda o cálculo de verdade. O que obrigava as duas semanas não era código — era a fila da Meta, que não responde a esforço. Rodando WhatsApp por instância própria, <strong>o caminho crítico deixa de existir</strong> e sobra só o que você escreve. Três dias passa a ser um prazo honesto para o controle inteiro, e o Fator R cai no quarto.</p>
+      <p>Você disse que entende os riscos, então registro apenas o que vira decisão de engenharia, não conselho: sessão não oficial cai, e cai sem avisar. Por isso <strong>chip dedicado, nunca o número pessoal</strong>, e <span class="mono">CONNECTION_UPDATE</span> monitorado com alerta — reconectar exige escanear QR de novo, e você precisa saber disso antes do cliente.</p>
+      <div class="callout">
+        <span class="eyebrow">Trinta minutos que pagam a migração inteira</span>
+        <p>No dia 1, toda a conversa com a Evolution passa por uma interface própria — <span class="mono">enviarTexto</span>, <span class="mono">baixarMidia</span>, <span class="mono">aoReceberMensagem</span> — e nada do resto do sistema sabe que a Evolution existe. No dia em que o volume justificar a Cloud API oficial, ou no dia em que o número cair de vez, trocar é escrever outra implementação da mesma interface. Custa meia hora agora e evita reescrita depois.</p>
       </div>
-      <p>O plano abaixo entrega o <strong>piloto</strong> em 25/09. A diferença entre demo e piloto não está no fluxo feliz — está no que acontece quando a foto está tremida, quando o mesmo comprovante chega duas vezes, quando o usuário responde "não, isso foi pessoal", e quando alguém pergunta onde ficam os dados dele.</p>
-      <div class="callout warn">
-        <span class="eyebrow">Comece hoje, e não é codificando</span>
-        <p>Criar o app no Meta Business, gerar a WABA de sandbox e pegar o número de teste. Sem verificação empresarial você já opera com <strong>2 números e 250 conversas por dia</strong> — de sobra para cinco usuários. Mas a verificação leva de <strong>24 horas a 5 dias úteis</strong> quando precisar, e se ela só começar na semana que vem, ela é quem define a data, não o código.</p>
-      </div>
+      <h3>Duas armadilhas conhecidas, já contornadas no plano</h3>
+      <p><strong>Base64 no webhook é historicamente instável</strong> entre versões — há relatos de o campo simplesmente não vir na 2.1.1, e de a configuração não persistir na 2.1.0. Não dependa dele: ao receber a mensagem, chame <span class="mono">POST /chat/getBase64FromMediaMessage</span> explicitamente, <strong>e chame na hora</strong>, porque a mídia expira e a segunda tentativa com o mesmo id devolve erro. E fixe a versão da imagem no compose, nunca <span class="mono">latest</span>.</p>
+      <p><strong>O eco.</strong> Suas próprias mensagens enviadas voltam no mesmo evento <span class="mono">MESSAGES_UPSERT</span>. Sem checar <span class="mono">data.key.fromMe</span> logo na entrada, o robô conversa consigo mesmo em laço. É o bug clássico da primeira hora.</p>
     </div>
 
     <div class="weeks">
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 1</span><span class="wd">seg 14/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 1 · bloco 1</span><span class="wd">2h</span></div>
         <div>
-          <h4>Encanamento e deploy</h4>
+          <h4>Evolution no ar</h4>
           <ul>
-            <li>Next.js, Postgres gerenciado, repositório, deploy em produção <em>hoje</em> — não na última semana</li>
-            <li>Webhook do WhatsApp recebendo e respondendo eco; usuário identificado pelo número, sem cadastro</li>
-            <li>Tabelas de empresa, lançamento e documento original</li>
+            <li>Docker Compose com Evolution v2 em versão fixa, Postgres e Redis</li>
+            <li>Instância criada, QR escaneado no <strong>chip dedicado</strong>, conexão confirmada</li>
+            <li>URL pública para o webhook — VPS ou túnel; sem isso nada chega</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 2</span><span class="wd">ter 15/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 1 · bloco 2</span><span class="wd">2h</span></div>
         <div>
-          <h4>Foto vira lançamento</h4>
+          <h4>Esqueleto da aplicação</h4>
           <ul>
-            <li>Imagem, PDF, texto e áudio entram; modelo com visão devolve valor, data, fornecedor, descrição e certeza</li>
-            <li>Original e texto bruto guardados sempre, ao lado do lançamento estruturado</li>
-            <li>Resposta de confirmação com o acumulado do mês</li>
-            <li><strong>Aqui é o fim da "tarde". O resto do cronograma é o que separa isto de um brinquedo.</strong></li>
+            <li>Next.js e Postgres da aplicação, separado do banco da Evolution</li>
+            <li>Tabelas: empresa, usuário por telefone, mensagem bruta, lançamento, documento, fornecedor</li>
+            <li>A interface de mensageria descrita acima, com a Evolution como primeira implementação</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 3</span><span class="wd">qua 16/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 1 · bloco 3</span><span class="wd">2h</span></div>
         <div>
-          <h4>Empresa ou pessoal</h4>
+          <h4>Ida e volta</h4>
+          <ul>
+            <li>Webhook em <span class="mono">MESSAGES_UPSERT</span>, descartando <span class="mono">fromMe</span></li>
+            <li>Mensagem bruta gravada antes de qualquer processamento — é o que salva a depuração</li>
+            <li>Idempotência pelo id da mensagem: reentrega do webhook não duplica nada</li>
+            <li>Resposta de volta pelo <span class="mono">/message/sendText</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 1 · bloco 4</span><span class="wd">2h</span></div>
+        <div>
+          <h4>Mídia na mão</h4>
+          <ul>
+            <li>Download imediato de imagem, PDF e áudio via <span class="mono">getBase64FromMediaMessage</span></li>
+            <li>Original salvo em storage com hash, sempre — é a decisão que vale ouro em 2027</li>
+            <li><strong>Fim do dia 1:</strong> você manda uma foto e ela chega gravada no seu banco, com o arquivo salvo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 2 · bloco 1</span><span class="wd">2h30</span></div>
+        <div>
+          <h4>Extração</h4>
+          <ul>
+            <li>Modelo com visão devolvendo saída tipada: valor, data, fornecedor, descrição, forma de pagamento e grau de certeza</li>
+            <li>Texto livre pelo mesmo caminho — "paguei 350 de material hoje" é entrada válida</li>
+            <li>Áudio transcrito antes de entrar no mesmo fluxo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 2 · bloco 2</span><span class="wd">2h</span></div>
+        <div>
+          <h4>Empresa, pessoal, categoria</h4>
           <ul>
             <li>Classificação com memória de fornecedor: acertou uma vez, acerta sempre</li>
             <li>Categorias fiscais, não categorias de finanças pessoais</li>
-            <li>Baixa certeza vira pergunta única, nunca fila de revisão</li>
-            <li>Entradas também, não só despesas — sem receita não existe Fator R nem saldo</li>
+            <li>Certeza baixa vira uma pergunta, nunca fila de revisão</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 4</span><span class="wd">qui 17/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 2 · bloco 3</span><span class="wd">2h</span></div>
         <div>
-          <h4>Quando dá errado</h4>
+          <h4>Conserto sem sair da conversa</h4>
           <ul>
-            <li>Correção em linguagem natural: "isso foi pessoal", "era 180 não 130", "apaga o último"</li>
-            <li>Deduplicação — o mesmo comprovante fotografado duas vezes não vira dois lançamentos</li>
-            <li>Foto ilegível, valor não encontrado, mensagem que não é despesa: cada um com resposta própria</li>
-            <li><strong>É o dia que a maioria pula, e é o que decide se o piloto sobrevive à primeira semana</strong></li>
+            <li>"isso foi pessoal", "era 180 não 130", "apaga o último" — correção em linguagem natural</li>
+            <li>Deduplicação por hash do arquivo e por valor, data e fornecedor próximos</li>
+            <li>Confirmação mostrando o acumulado do mês sem que ninguém peça relatório</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 5</span><span class="wd">sex 18/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 2 · bloco 4</span><span class="wd">1h30</span></div>
         <div>
-          <h4>Painel do mês</h4>
+          <h4>Entradas e o que não é despesa</h4>
           <ul>
-            <li>Web só de leitura: entradas, saídas, saldo, lista de lançamentos</li>
-            <li>Acesso por link mágico enviado no WhatsApp — nenhuma senha</li>
-            <li>Edição e exclusão, as únicas escritas da v1</li>
-            <li><strong>Despesas recorrentes:</strong> cadastro, lançamento automático no dia e confirmação por uma palavra — o substituto do extrato, e o dia que o corte da integração bancária pagou</li>
+            <li>Receita capturada junto — sem ela não há saldo nem Fator R</li>
+            <li>Foto ilegível, valor ausente, mensagem que não é lançamento: cada um com resposta própria</li>
+            <li><strong>Fim do dia 2:</strong> o produto funciona. O resto é fazer o dono enxergar o que ele já lançou</li>
           </ul>
         </div>
       </div>
-      <div class="week" style="background:var(--surface-2)">
-        <div class="week-meta"><span class="wn">Sáb e dom</span><span class="wd">19 — 20/09</span></div>
+
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 3 · bloco 1</span><span class="wd">2h</span></div>
         <div>
-          <h4>Folga declarada</h4>
+          <h4>Painel</h4>
           <ul>
-            <li>Não é reserva de trabalho: é a margem que absorve o dia que vai estourar, e algum dia vai. Um cronograma de doze dias sem folga é um cronograma de dez dias com atraso embutido.</li>
+            <li>Web só de leitura, com acesso por link mágico enviado no WhatsApp — nenhuma senha</li>
+            <li>Mês corrente, lista de lançamentos, edição e exclusão</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 6</span><span class="wd">seg 21/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 3 · bloco 2</span><span class="wd">2h</span></div>
         <div>
           <h4>Os BIs pequenos</h4>
           <ul>
-            <li>Evolução mês a mês, top 5 categorias, top fornecedores, comparativo com o mês anterior</li>
-            <li>Despesa da empresa versus pessoal, lado a lado — a tela que justifica o produto</li>
+            <li>Evolução mês a mês, top categorias, top fornecedores, comparativo com o mês anterior</li>
+            <li>Empresa versus pessoal lado a lado — a tela que justifica o produto</li>
             <li>Exportação em CSV</li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 7</span><span class="wd">ter 22/09</span></div>
+        <div class="week-meta"><span class="wn">Dia 3 · bloco 3</span><span class="wd">2h</span></div>
+        <div>
+          <h4>Recorrentes</h4>
+          <ul>
+            <li>Cadastro do fixo: aluguel, internet, contador, salários, assinaturas</li>
+            <li>Tarefa diária que lança no dia certo e pede confirmação de uma palavra</li>
+            <li>É o substituto do extrato bancário, e a razão de o corte da integração não doer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Dia 3 · bloco 4</span><span class="wd">2h</span></div>
+        <div>
+          <h4>Fechar o ciclo</h4>
+          <ul>
+            <li>Resumo semanal e mensal enviados sozinhos</li>
+            <li>Indicador de quantos dias do mês tiveram lançamento — honestidade sobre a completude</li>
+            <li>Teto de uso por usuário, antes de existir usuário</li>
+            <li><strong>Fim do dia 3:</strong> você usa por 24 horas seguidas, com a sua própria empresa, antes de mostrar para alguém</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week" style="background:var(--accent-soft)">
+        <div class="week-meta"><span class="wn">Dia 4 · qui 17</span><span class="wd">meio dia</span></div>
         <div>
           <h4>Fator R</h4>
           <ul>
-            <li>Entrada de receita e retiradas dos 12 meses, com atalho para quem não tem histórico</li>
+            <li>Receita e retiradas dos 12 meses, com atalho para quem não tem histórico no sistema</li>
             <li>Cálculo, comparação de anexos e o número em reais</li>
-            <li>Lista curada de CNAEs sujeitos ao Fator R — curada à mão, não gerada por modelo</li>
-            <li>Avisos de limite na própria tela: 12 meses móveis, e a decisão é do contador</li>
+            <li>Lista de CNAEs sujeitos ao Fator R, curada à mão — nunca gerada por modelo</li>
+            <li>Link de leitura para o dono mandar ao contador dele</li>
+            <li><strong>É o que separa o Nexus de um bot grátis. Não corte.</strong></li>
           </ul>
         </div>
       </div>
       <div class="week">
-        <div class="week-meta"><span class="wn">Dia 8</span><span class="wd">qua 23/09</span></div>
+        <div class="week-meta"><span class="wn">Dias 5+</span><span class="wd">18 — 25/09</span></div>
         <div>
-          <h4>Relatório que sai de casa</h4>
-          <ul>
-            <li>Link público de leitura com o cálculo do Fator R, para o dono mandar ao contador</li>
-            <li>Resumo do mês enviado por WhatsApp — primeira mensagem proativa, e primeiro custo por mensagem</li>
-          </ul>
-        </div>
-      </div>
-      <div class="week">
-        <div class="week-meta"><span class="wn">Dia 9</span><span class="wd">qui 24/09</span></div>
-        <div>
-          <h4>O que não dá para pedir desculpa depois</h4>
-          <ul>
-            <li>Consentimento no primeiro contato, política de privacidade, exclusão de conta funcionando de verdade</li>
-            <li>Teto de uso por usuário e proteção contra abuso — a conta do modelo é sua</li>
-            <li>Telemetria do que importa: tempo até o primeiro lançamento, taxa de acerto da classificação, retorno no dia seguinte</li>
-          </ul>
-        </div>
-      </div>
-      <div class="week">
-        <div class="week-meta"><span class="wn">Dia 10</span><span class="wd">sex 25/09</span></div>
-        <div>
-          <h4>Entrega</h4>
+          <h4>Piloto, com folga</h4>
           <ul>
             <li>Cinco donos de negócio recrutados à mão, colocados para dentro um a um</li>
-            <li>Cobrança <strong>manual, por Pix</strong> ou nenhuma durante o piloto — assinatura automática não é problema de setembro</li>
-            <li>Você acompanhando cada conversa no primeiro fim de semana</li>
+            <li>Consentimento no primeiro contato, política de privacidade, exclusão funcionando</li>
+            <li>Cobrança manual por Pix, ou nenhuma — o que se compra dos cinco primeiros é conversa</li>
+            <li>A semana inteira de folga contra 25/09 é a margem que o cronograma anterior não tinha</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="prose" style="margin-top:28px">
-      <h3>O que sai do escopo para a data caber</h3>
+      <h3>O que fica fora para três dias caberem</h3>
     </div>
     <div class="cut">
-      <div><b>Cobrança automática</b>Pix na mão durante o piloto. Cartão e recorrência em outubro.</div>
       <div><b>Qualquer leitura de conta</b>Extrato, OFX, Open Finance. Fora do produto, não adiado.</div>
-      <div><b>Conciliação bancária</b>Não existe saldo de banco para conciliar contra. Por escolha.</div>
-      <div><b>Cadastro sozinho</b>Os cinco primeiros entram na mão. Autoatendimento em outubro.</div>
-      <div><b>Verificação empresarial</b>Só se a Meta exigir. 250 conversas por dia bastam para cinco usuários.</div>
-      <div><b>Emissão de nota, estoque, contas a pagar</b>Nada disso é o problema de quem está no caderno.</div>
+      <div><b>Cobrança automática</b>Pix na mão no piloto. Recorrência depois.</div>
+      <div><b>Cadastro sozinho</b>Os cinco primeiros entram na mão.</div>
+      <div><b>Multiusuário</b>O cliente é uma pessoa só. Literalmente.</div>
+      <div><b>API oficial da Meta</b>Enquanto o volume não pedir. A interface do dia 1 mantém a porta aberta.</div>
+      <div><b>Nota fiscal, estoque, contas a pagar</b>Nada disso é o problema de quem está no caderno.</div>
     </div>
 
     <div class="prose" style="margin-top:24px">
       <div class="callout">
-        <span class="eyebrow">A regra que faz a data valer</span>
-        <p>Se algum dia estourar, o que cai é o <strong>dia 6</strong> — os BIs pequenos podem virar três somatórios numa tabela sem perder o piloto. O que nunca cai é o <strong>dia 4</strong>, porque erro sem conserto expulsa usuário, e o <strong>dia 7</strong>, porque é a única parte que a concorrência não copia numa tarde.</p>
+        <span class="eyebrow">A regra de corte</span>
+        <p>Se um bloco estourar, o que cai é o <strong>bloco 2 do dia 3</strong> — os BIs viram três somatórios numa tabela sem matar o piloto. O que nunca cai é o <strong>bloco 3 do dia 2</strong>, porque erro sem conserto expulsa usuário na primeira semana, nem o <strong>dia 4</strong>, porque sem ele você tem um bot de WhatsApp igual a seis que já existem e são de graça.</p>
       </div>
     </div>
   </section>
@@ -478,7 +508,9 @@
       <h2>O que custa rodar isso</h2>
     </div>
     <div class="prose">
-      <p><strong>WhatsApp Cloud API, direto da Meta.</strong> Desde janeiro de 2026 a cobrança é por mensagem, e a boa notícia é estrutural para este produto: a conversa é sempre iniciada pelo cliente, e as respostas dentro da janela de 24 horas são mensagens de serviço. O custo real fica nas mensagens proativas — o fechamento do mês, o lembrete de DAS — cobradas como utilitárias, na casa de alguns centavos por mensagem. As tabelas públicas divergem bastante entre si, de R$ 0,06 a R$ 0,21; <strong>confirmar na fatura do primeiro mês</strong> antes de prometer qualquer margem.</p>
+      <p><strong>Evolution API auto-hospedada, com a Cloud API oficial guardada para depois.</strong> Sem fila de aprovação, sem verificação empresarial, sem custo por mensagem — e sem garantia de continuidade, que é o preço. A troca é deliberada: velocidade agora, estabilidade quando houver volume que a justifique. A interface de mensageria do dia 1 é o que torna essa troca barata no futuro.</p>
+      <p>Para referência do dia em que a migração fizer sentido: a Cloud API cobra por mensagem desde janeiro de 2026, e a estrutura favorece este produto — a conversa é sempre iniciada pelo cliente, e as respostas dentro da janela de 24 horas são mensagens de serviço. O custo ficaria nas proativas, entre R$ 0,06 e R$ 0,21 conforme a tabela consultada.</p>
+      <p><strong>Uma consequência de auto-hospedar:</strong> a sessão do WhatsApp e o conteúdo das conversas passam a morar no seu servidor. Isso aumenta o que você guarda e o que precisa proteger, e entra na conta da LGPD junto com o resto.</p>
       <p><strong>Nenhuma integração bancária, e isso agora é posicionamento.</strong> O custo evitado é real — Pluggy em torno de R$ 2.500 por mês, Belvo por volta de R$ 6.000, TecnoSpeed com entrada de R$ 1.500 mais R$ 540 mensais, tudo fixo antes do primeiro real de receita. Mas o motivo principal é outro: consentimento de Open Finance é um formulário bancário no meio do onboarding, e este público desiste exatamente ali. Sem ele, o cadastro inteiro é mandar a primeira mensagem.</p>
       <p>O efeito colateral bom aparece na LGPD: <strong>não tocamos em dado bancário</strong>. O que guardamos é o que o dono escolheu contar. Isso encolhe a superfície de risco, a política de privacidade e a conversa de segurança — os três de uma vez.</p>
       <p><strong>O resto é deliberadamente chato.</strong> Next.js na Vercel, Postgres gerenciado, fila gerenciada, storage compatível com S3 para os originais. Nada de Kubernetes, nada de plantão.</p>
@@ -510,8 +542,8 @@
     <div class="risks">
       <div class="risk">
         <span class="sev alta">Alta</span>
-        <span class="r">Doze dias não perdoam nada</span>
-        <span class="m">Não há folga além do fim de semana declarado. Qualquer ideia nova vai para a lista de outubro sem discussão. E o risco não é o código: é a fila da Meta, que não responde a esforço. Por isso a conta abre hoje, domingo, antes da primeira linha.</span>
+        <span class="r">Três dias só fecham com escopo congelado</span>
+        <span class="m">Sem a fila da Meta, o risco volta a ser o de sempre: escopo crescendo durante a execução. Qualquer ideia nova vai para a lista de outubro sem discussão. A folga real do plano é a semana entre o dia 4 e 25/09 — ela existe para o imprevisto, não para caber mais funcionalidade.</span>
       </div>
       <div class="risk">
         <span class="sev alta">Alta</span>
@@ -535,8 +567,8 @@
       </div>
       <div class="risk">
         <span class="sev media">Média</span>
-        <span class="r">Dependência de plataforma</span>
-        <span class="m">Meta muda preço e política do WhatsApp com frequência, já mudou o modelo de cobrança em janeiro de 2026, e sem verificação empresarial a conta é cancelada se passar de 250 conversas diárias por 15 dias. Mitigação: manter a lógica fora da camada de mensageria desde o começo, para que Telegram, SMS ou app próprio sejam troca de adaptador.</span>
+        <span class="r">A sessão da Evolution cai</span>
+        <span class="m">Conexão não oficial desconecta, e pode ser bloqueada. Não é hipótese remota, é operação normal. Mitigação: chip dedicado e descartável, nunca o número pessoal; <span class="mono">CONNECTION_UPDATE</span> monitorado com alerta para você; nada de disparo em massa; e a interface de mensageria que transforma a ida para a Cloud API oficial em uma implementação nova, não em reescrita. Mitigação: manter a lógica fora da camada de mensageria desde o começo, para que Telegram, SMS ou app próprio sejam troca de adaptador.</span>
       </div>
       <div class="risk">
         <span class="sev media">Média</span>
@@ -578,12 +610,16 @@
       <a href="https://www.tabnews.com.br/GuilhermeVieira/estou-desenvolvendo-um-app-de-financas-pessoais-e-nao-consigo-pagar-o-open-finance-pluggy-r2-5k-mes-belvo-r6k-mes-tecnospeed-r1-5k-de-entrada-r540">Custo real de Open Finance para quem está começando</a>
       <a href="https://www.socialhub.pro/blog/preco-whatsapp-api-2026-brasil/">Preço da WhatsApp Business API no Brasil em 2026</a>
       <a href="https://blog.geekacademy.site/blog/whatsapp-business-api-custo-brasil">Tabela de custo da WhatsApp Business API</a>
+      <a href="https://doc.evolution-api.com/v2/api-reference/chat-controller/get-base64">Evolution API v2 — getBase64FromMediaMessage</a>
+      <a href="https://github.com/EvolutionAPI/evolution-api/issues/942">Evolution API — falha de base64 em webhook de áudio e imagem</a>
+      <a href="https://github.com/EvolutionAPI/evolution-api/issues/834">Evolution API — webhook base64 não persiste na configuração</a>
+      <a href="https://doc.evolution-api.com/v1/en/configuration/webhooks">Evolution API — configuração de webhooks e eventos</a>
       <a href="https://iadobrasil.com/whatsapp-cloud-api-sem-bsp-guia-2026/">WhatsApp Cloud API sem BSP — limites de número e de conversas</a>
       <a href="https://jetchat.com.br/whatsapp-business-api-e-cloud/instalacao-whatsapp-cloud-api/">Configuração da Cloud API e prazos de verificação empresarial</a>
     </div>
   </section>
 
   <footer>
-    Revisão 5 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
+    Revisão 6 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
   </footer>
 </div>
