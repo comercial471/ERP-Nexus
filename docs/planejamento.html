@@ -136,7 +136,7 @@
   <header class="masthead">
     <div class="masthead-top">
       <div class="wordmark">Nexus em <span>doze dias</span></div>
-      <div class="stamp">Revisão 4 · piloto em 25/09</div>
+      <div class="stamp">Revisão 5 · piloto em 25/09</div>
     </div>
     <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — com usuários reais usando em <strong>25 de setembro</strong>.</p>
   </header>
@@ -144,7 +144,7 @@
   <div class="clock">
     <div class="now"><span class="d">HOJE · dom 13</span><span class="l">Abrir a conta Meta Business. É o único caminho crítico que não é código</span></div>
     <div><span class="d">seg 14 — sex 18</span><span class="l">Semana 1: o cano completo, do WhatsApp ao painel</span></div>
-    <div><span class="d">seg 21 — qui 24</span><span class="l">Semana 2: BIs, Fator R, LGPD mínima</span></div>
+    <div><span class="d">seg 21 — qui 24</span><span class="l">Semana 2: BIs, Fator R, LGPD mínima. Zero integração com banco</span></div>
     <div class="now"><span class="d">sex 25/09</span><span class="l">Cinco usuários reais lançando despesa de verdade</span></div>
   </div>
 
@@ -166,8 +166,9 @@
       <p>Esse dado de 61% não é uma estatística de contexto. <strong>É a especificação do produto.</strong> Todo sistema de gestão existente assume que a empresa tem conta separada, plano de contas e alguém que digita. Esse público não tem nenhuma das três coisas — e é exatamente por isso que continua no caderno depois de vinte anos de ERP em nuvem: os produtos pedem, como pré-requisito, a organização que o cliente esperava receber deles.</p>
       <div class="callout">
         <span class="eyebrow">A inversão</span>
-        <p>Não pedir que ele separe as contas antes de usar. <strong>Ler a bagunça como ela é</strong> — a conta pessoal onde a empresa paga fornecedor, o Pix no meio do supermercado — e devolver separado, categorizado e somado. A organização é a entrega, não o requisito de entrada.</p>
+        <p>Não pedir que ele separe as contas, nem que conecte banco, nem que escolha plano de contas. <strong>Ele conta o que gastou, do jeito que gastou</strong> — no Pix pessoal, no dinheiro, no cartão do sócio — e recebe de volta separado, categorizado e somado. A organização é a entrega, não o requisito de entrada.</p>
       </div>
+      <p>Uma decisão que decorre disso: <strong>o produto não lê conta bancária</strong>. Nem agora, nem como plano. Não é adiamento por custo — é o reconhecimento de que esse público paga fornecedor em dinheiro, no Pix da pessoa física e no cartão do sócio, e que nenhuma integração bancária alcança isso. O dado que importa não está em extrato nenhum. Está na cabeça do dono, e só sai de lá se perguntarem.</p>
     </div>
   </section>
 
@@ -183,9 +184,10 @@
       <p>Isso não mata a ideia. Mata uma versão dela. Se o produto for "bot de WhatsApp que lança despesa", ele nasce commodity, sem barreira de entrada, competindo contra grátis. Mas os dois grupos têm buracos precisos, e os buracos são o mesmo:</p>
       <ul>
         <li><strong>Os bots de WhatsApp são de finanças pessoais.</strong> Não sabem o que é CNPJ, Simples Nacional, pró-labore ou DAS. Categorizam "Alimentação" e "Transporte", não "dedutível" e "pró-labore".</li>
-        <li><strong>Os bancos só enxergam a própria conta.</strong> É estruturalmente impossível para o Cora ver o gasto da empresa que aconteceu no Nubank pessoal do dono — e é lá que está a maior parte, segundo os 61%.</li>
+        <li><strong>Os bancos só enxergam os próprios trilhos.</strong> O Cora nunca verá o que o dono pagou em dinheiro, no Pix do CPF dele ou no cartão da esposa. Nós vemos, porque a entrada é ele falando — e isso vale para qualquer forma de pagamento que exista.</li>
       </ul>
-      <p>Sobra um espaço que nenhum dos dois ocupa, e é estreito o bastante para um dev só defender: <strong>o controle financeiro que entende que aquilo ali é uma pessoa jurídica</strong> — que separa pessoal de empresa dentro da mesma conta bagunçada, e que transforma o resultado numa decisão tributária concreta.</p>
+      <p>Sobra um espaço que nenhum dos dois ocupa, e é estreito o bastante para um dev só defender: <strong>o controle financeiro que entende que aquilo ali é uma pessoa jurídica</strong> — que separa o gasto da empresa do gasto do dono, e que transforma o resultado numa decisão tributária concreta.</p>
+      <p>Dito com todas as letras: sem leitura de conta, a distância para os seis concorrentes de WhatsApp encolhe. O que sobra de barreira é semântica de PJ — categoria fiscal, pró-labore, DAS — e o cálculo do Fator R. É barreira menor do que seria com banco integrado, e ainda assim é a única que nenhum deles pode copiar sem virar outro produto. <strong>Ela precisa aparecer na primeira semana de uso, não no terceiro mês</strong>, ou o cliente não distingue o Nexus de um bot grátis.</p>
       <div class="callout warn">
         <span class="eyebrow">Discordância registrada</span>
         <p>Você descreveu a simulação de tributos como algo que vem "de quebra". Eu inverteria: <strong>a simulação é a única parte que os concorrentes não conseguem copiar barato</strong>, e o lançamento automático é a commodity que dá acesso ao dado. Se um dos dois tiver que sair do escopo de outubro, que saia o refinamento do lançamento — nunca a simulação.</p>
@@ -213,8 +215,8 @@
       <div class="prose" style="gap:14px">
         <h4 style="margin:0">Momento 1 — lançar sem pensar</h4>
         <p>Foto, texto, áudio ou PDF encaminhado. Sem app, sem categoria para escolher, sem campo obrigatório. A resposta confirma o que foi entendido e mostra o acumulado do mês — o cliente descobre o total sem nunca ter pedido um relatório.</p>
-        <h4 style="margin:0">Momento 2 — separar a bagunça</h4>
-        <p>O extrato entra (arquivo do banco, no começo) e cada transação é classificada em <strong>empresa</strong> ou <strong>pessoal</strong>, com o motivo. As dúvidas viram uma pergunta só, no WhatsApp, uma vez por semana — nunca uma fila de 200 itens para revisar.</p>
+        <h4 style="margin:0">Momento 2 — o que ele esqueceria</h4>
+        <p>Sem extrato, a completude do dado é o problema central — e a resposta são as <strong>despesas recorrentes</strong>. Aluguel, internet, contador, salários, assinaturas: cadastradas uma vez, lançadas sozinhas todo mês, confirmadas com um "sim". Numa empresa pequena isso costuma ser a maior fatia do custo fixo, e é exatamente a que some do caderno. Somado a um toque no fim do dia — "fechou o caixa? saiu mais alguma coisa?" — cobre-se sem banco o que o banco cobriria.</p>
         <h4 style="margin:0">Momento 3 — a conta que ninguém fez</h4>
         <p>Com receita e retiradas na base, o sistema calcula a única coisa que o dono nunca calculou sozinho: <strong>se ele está no anexo errado do Simples</strong>. É aqui que a assinatura se paga, e é a próxima seção.</p>
       </div>
@@ -230,7 +232,7 @@
           <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="var(--ink)">
             <rect x="12" y="34" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="53">foto · texto · áudio</text>
             <rect x="12" y="70" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="89">PDF encaminhado</text>
-            <rect x="12" y="106" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="125">extrato OFX · CSV</text>
+            <rect x="12" y="106" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="125">recorrente do mês</text>
           </g>
           <g stroke="var(--line-strong)" stroke-width="1.2" fill="none" marker-end="url(#a2)" color="var(--line-strong)">
             <path d="M162,49 C182,49 182,85 198,85"/><path d="M162,85 L198,85"/><path d="M162,121 C182,121 182,85 198,85"/>
@@ -355,6 +357,7 @@
             <li>Classificação com memória de fornecedor: acertou uma vez, acerta sempre</li>
             <li>Categorias fiscais, não categorias de finanças pessoais</li>
             <li>Baixa certeza vira pergunta única, nunca fila de revisão</li>
+            <li>Entradas também, não só despesas — sem receita não existe Fator R nem saldo</li>
           </ul>
         </div>
       </div>
@@ -378,6 +381,7 @@
             <li>Web só de leitura: entradas, saídas, saldo, lista de lançamentos</li>
             <li>Acesso por link mágico enviado no WhatsApp — nenhuma senha</li>
             <li>Edição e exclusão, as únicas escritas da v1</li>
+            <li><strong>Despesas recorrentes:</strong> cadastro, lançamento automático no dia e confirmação por uma palavra — o substituto do extrato, e o dia que o corte da integração bancária pagou</li>
           </ul>
         </div>
       </div>
@@ -452,8 +456,8 @@
     </div>
     <div class="cut">
       <div><b>Cobrança automática</b>Pix na mão durante o piloto. Cartão e recorrência em outubro.</div>
-      <div><b>Importação de extrato</b>OFX e CSV ficam para outubro. Em setembro, só WhatsApp.</div>
-      <div><b>Open Finance</b>Custo fixo alto e fricção no onboarding. Depois de haver receita.</div>
+      <div><b>Qualquer leitura de conta</b>Extrato, OFX, Open Finance. Fora do produto, não adiado.</div>
+      <div><b>Conciliação bancária</b>Não existe saldo de banco para conciliar contra. Por escolha.</div>
       <div><b>Cadastro sozinho</b>Os cinco primeiros entram na mão. Autoatendimento em outubro.</div>
       <div><b>Verificação empresarial</b>Só se a Meta exigir. 250 conversas por dia bastam para cinco usuários.</div>
       <div><b>Emissão de nota, estoque, contas a pagar</b>Nada disso é o problema de quem está no caderno.</div>
@@ -475,7 +479,8 @@
     </div>
     <div class="prose">
       <p><strong>WhatsApp Cloud API, direto da Meta.</strong> Desde janeiro de 2026 a cobrança é por mensagem, e a boa notícia é estrutural para este produto: a conversa é sempre iniciada pelo cliente, e as respostas dentro da janela de 24 horas são mensagens de serviço. O custo real fica nas mensagens proativas — o fechamento do mês, o lembrete de DAS — cobradas como utilitárias, na casa de alguns centavos por mensagem. As tabelas públicas divergem bastante entre si, de R$ 0,06 a R$ 0,21; <strong>confirmar na fatura do primeiro mês</strong> antes de prometer qualquer margem.</p>
-      <p><strong>Open Finance fica para a v2, e o motivo é preço.</strong> Pluggy em torno de R$ 2.500 por mês, Belvo por volta de R$ 6.000, TecnoSpeed com entrada de R$ 1.500 mais R$ 540 mensais. É custo fixo alto antes do primeiro real de receita, e ainda adiciona um fluxo de consentimento no onboarding — justamente onde este público desiste. Existem revendas cobrando por conta conectada, na faixa de R$ 20, e é esse formato que faz sentido quando entrar: custo que sobe junto com a receita, não antes dela.</p>
+      <p><strong>Nenhuma integração bancária, e isso agora é posicionamento.</strong> O custo evitado é real — Pluggy em torno de R$ 2.500 por mês, Belvo por volta de R$ 6.000, TecnoSpeed com entrada de R$ 1.500 mais R$ 540 mensais, tudo fixo antes do primeiro real de receita. Mas o motivo principal é outro: consentimento de Open Finance é um formulário bancário no meio do onboarding, e este público desiste exatamente ali. Sem ele, o cadastro inteiro é mandar a primeira mensagem.</p>
+      <p>O efeito colateral bom aparece na LGPD: <strong>não tocamos em dado bancário</strong>. O que guardamos é o que o dono escolheu contar. Isso encolhe a superfície de risco, a política de privacidade e a conversa de segurança — os três de uma vez.</p>
       <p><strong>O resto é deliberadamente chato.</strong> Next.js na Vercel, Postgres gerenciado, fila gerenciada, storage compatível com S3 para os originais. Nada de Kubernetes, nada de plantão.</p>
       <p><strong>LLM:</strong> modelo com visão para extrair o documento, modelo barato para triagem e para a conversa. Na ordem de grandeza de 100 documentos por usuário no mês, o custo por assinante fica em poucos reais — confortável dentro de R$ 39, desde que haja teto de uso e proteção contra abuso desde o primeiro dia.</p>
       <p><strong>Uma regra de arquitetura que não custa nada agora e vale muito depois:</strong> guardar o documento original e o texto bruto extraído, sempre, além do lançamento estruturado. Reprocessar o passado com um modelo melhor — ou com regras fiscais que ainda nem existem — só é possível se o original estiver lá.</p>
@@ -516,7 +521,12 @@
       <div class="risk">
         <span class="sev alta">Alta</span>
         <span class="r">Commoditização pelo bot de WhatsApp</span>
-        <span class="m">Seis concorrentes já fazem lançamento por foto, alguns de graça. Se ficarmos parados na paridade, perdemos. A defesa é ir mais fundo em PJ — separação pessoal e empresa, categoria fiscal, decisão tributária — não competir em conveniência de chat.</span>
+        <span class="m">Seis concorrentes já fazem lançamento por foto, alguns de graça, e sem leitura de conta a nossa entrada é quase idêntica à deles. A defesa inteira passa a ser profundidade de PJ — categoria fiscal, pró-labore, recorrentes, Fator R. Se o cliente não vir isso na primeira semana, ele não tem motivo para pagar.</span>
+      </div>
+      <div class="risk">
+        <span class="sev alta">Alta</span>
+        <span class="r">Sem extrato, o dado fica incompleto</span>
+        <span class="m">Se o dono lança sete das dez despesas do mês, o relatório mente e o Fator R sai errado — e um número errado é pior que número nenhum. É o custo direto de não integrar banco, e a mitigação é produto, não tecnologia: recorrentes cadastradas, toque diário no fim do expediente, e um indicador honesto na tela dizendo quantos dias do mês tiveram lançamento. Medir isso desde o primeiro usuário do piloto.</span>
       </div>
       <div class="risk">
         <span class="sev media">Média</span>
@@ -574,6 +584,6 @@
   </section>
 
   <footer>
-    Revisão 4 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
+    Revisão 5 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
   </footer>
 </div>
