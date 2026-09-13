@@ -277,6 +277,7 @@
       <div class="stamp">Planejamento · não iniciado</div>
     </div>
     <p class="lede">Mini-ERP financeiro com ingestão autônoma de documentos fiscais, construído em volta de uma tese única: a partir de 2027, o crédito de CBS e IBS depende da qualidade do documento que o <em>fornecedor</em> emitiu — e ninguém no mercado de PME está preparado para auditar isso em escala.</p>
+    <p class="lede" style="font-size:var(--step-0)"><span class="eyebrow" style="color:var(--accent)">Escopo travado</span><br>Empresas de serviço no Simples e no Lucro Presumido · vendido através de contadores e BPOs · só leitura e crédito, sem emissão de documento · <strong>um desenvolvedor</strong>, lançando cedo e melhorando em produção.</p>
   </header>
 
   <div class="clock">
@@ -607,7 +608,8 @@
     <div class="prose" style="margin-top:32px">
       <h3>Os quatro módulos</h3>
       <h4>1. Ingestão e cofre documental</h4>
-      <p>Polling contínuo do <span class="mono">NFeDistribuicaoDFe</span> — serviço nacional que entrega os documentos em que o CNPJ é emitente, destinatário, transportador ou terceiro — com manifestação do destinatário automatizada (Ciência da Operação para liberar o XML completo, depois a manifestação conclusiva). Exige certificado A1 em custódia, o que é ao mesmo tempo a maior barreira técnica e o maior fosso: quem já tem o certificado do cliente tem o fluxo inteiro. Complementado por NFS-e via ADN, caixa de e-mail dedicada por empresa, WhatsApp e upload.</p>
+      <p>Polling contínuo do <span class="mono">NFeDistribuicaoDFe</span> — serviço nacional que entrega os documentos em que o CNPJ é emitente, destinatário, transportador ou terceiro — com manifestação do destinatário automatizada (Ciência da Operação para liberar o XML completo, depois a manifestação conclusiva). Complementado por NFS-e via ADN, caixa de e-mail dedicada por empresa, WhatsApp e upload.</p>
+      <p>Na configuração solo, <strong>isso não se implementa: contrata-se</strong>. Ver a seção de comprar versus construir — a decisão tira o certificado A1 da nossa custódia e, com ele, o único risco existencial do projeto.</p>
       <h4>2. Financeiro autônomo</h4>
       <p>Contas a pagar e receber geradas a partir do documento, não digitadas. Conciliação bancária por Open Finance, com cobertura de 47+ instituições e leitura de faturas de cartão — sem o ritual do OFX. Agendamento e baixa automática, com regras de aprovação por alçada.</p>
       <h4>3. Motor de crédito e apuração-sombra</h4>
@@ -634,103 +636,166 @@
     </div>
   </section>
 
-  <!-- ============ 7. ROADMAP ============ -->
+  <!-- ============ 7. COMPRAR VS CONSTRUIR ============ -->
   <section>
     <div class="sec-head">
-      <span class="eyebrow">07 · Execução</span>
-      <h2>Quatro fases, ancoradas no calendário da lei</h2>
+      <span class="eyebrow">07 · Alavanca</span>
+      <h2>O que um dev só não constrói</h2>
+      <p class="prose" style="margin-top:4px">Com um desenvolvedor, a lista de "não construir" é mais importante que a de construir. Cada item abaixo é um trimestre de trabalho que vira uma chamada de API.</p>
     </div>
-    <div class="phases">
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="pn">Fase 0</span>
-          <span class="pd">set — out / 2026</span>
-          <span class="pg">6 semanas</span>
-        </div>
-        <div>
-          <h4>Fundação e ingestão</h4>
-          <ul>
-            <li>Monorepo, autenticação, multi-tenant, modelo de dados temporal com vigência de regras</li>
-            <li>Custódia de certificado A1 e assinatura isolada — o item de maior risco, feito primeiro</li>
-            <li>Polling de <span class="mono">NFeDistribuicaoDFe</span> com manifestação automática e cofre documental</li>
-            <li>Parser completo do leiaute NF-e incluindo o grupo UB da NT 2025.002</li>
-            <li><strong>Critério de saída:</strong> um CNPJ real com todas as notas de entrada dos últimos 90 dias capturadas e indexadas sozinhas</li>
-          </ul>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="pn">Fase 1</span>
-          <span class="pd">out / 2026 — jan / 2027</span>
-          <span class="pg">12 semanas</span>
-        </div>
-        <div>
-          <h4>Financeiro autônomo — beta fechado</h4>
-          <ul>
-            <li>Contas a pagar e receber geradas a partir do documento; conciliação via Open Finance</li>
-            <li>Extração por IA para NFS-e fora do padrão, comprovantes, boletos e recibos</li>
-            <li>Motor de confiança e fila de exceção; classificação em plano de contas e centro de custo</li>
-            <li>DRE, fluxo de caixa realizado e projetado</li>
-            <li><strong>Critério de saída:</strong> 5 a 10 empresas piloto, 70% de lançamento sem toque humano</li>
-          </ul>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="pn">Fase 2</span>
-          <span class="pd">jan — abr / 2027</span>
-          <span class="pg">16 semanas</span>
-        </div>
-        <div>
-          <h4>Motor de crédito — lançamento comercial</h4>
-          <ul>
-            <li>Validador de destaque IBS/CBS na entrada, com score de conformidade por fornecedor</li>
-            <li>Classificação de creditamento item a item com citação legal (arts. 47 a 57, 108 e 109)</li>
-            <li>Apuração-sombra de CBS e diff contra a apuração assistida</li>
-            <li>Simulador Simples puro versus híbrido — mirando a janela de <strong>março de 2027</strong></li>
-            <li><strong>Critério de saída:</strong> valor de crédito recuperado demonstrável em reais, por cliente</li>
-          </ul>
-        </div>
-      </div>
-      <div class="phase">
-        <div class="phase-meta">
-          <span class="pn">Fase 3</span>
-          <span class="pd">mai — dez / 2027</span>
-          <span class="pg">continuado</span>
-        </div>
-        <div>
-          <h4>Caixa, BI e agentes</h4>
-          <ul>
-            <li>Split payment modelado na projeção de caixa e alertas de capital de giro</li>
-            <li>Painéis de carga efetiva, crédito capturado versus perdido, placar de fornecedores</li>
-            <li>Agentes que cobram reemissão de nota, questionam divergência e fecham o mês sozinhos</li>
-            <li>Preparação para o IBS multi-UF e multi-município (subgrupos IBSUF e IBSMun)</li>
-          </ul>
-        </div>
-      </div>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Capacidade</th><th>Construir custa</th><th>Decisão</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Distribuição DF-e + manifestação</strong></td>
+            <td>2 a 3 meses, mais custódia de certificado A1 e plantão para instabilidade da SEFAZ</td>
+            <td class="us"><strong>Comprar.</strong> Agregador fiscal (PlugNotas, Focus NF-e, Nuvem Fiscal e similares). O certificado fica na custódia deles, não na nossa. Elimina o risco existencial da lista.</td>
+          </tr>
+          <tr>
+            <td><strong>NFS-e de municípios fora do padrão</strong></td>
+            <td>Incontável — é o poço sem fundo clássico do fiscal brasileiro</td>
+            <td class="us"><strong>Comprar</strong> o que o agregador cobre; <strong>IA</strong> no resto. O padrão nacional via ADN reduz isso ano a ano.</td>
+          </tr>
+          <tr>
+            <td><strong>Extrato bancário e conciliação</strong></td>
+            <td>Certificação Open Finance, ou um conector por banco</td>
+            <td class="us"><strong>Comprar.</strong> Pluggy ou equivalente, com 47+ instituições e fatura de cartão já resolvidas.</td>
+          </tr>
+          <tr>
+            <td><strong>Infra</strong></td>
+            <td>Kubernetes, observabilidade, plantão</td>
+            <td class="us"><strong>Gerenciado.</strong> Vercel ou Railway, Postgres gerenciado, filas gerenciadas. Zero servidor para cuidar.</td>
+          </tr>
+          <tr>
+            <td><strong>Parser do grupo UB e motor de crédito</strong></td>
+            <td>É o trabalho</td>
+            <td><strong>Construir.</strong> É o único lugar onde a diferenciação mora. Tudo que sobra de tempo vai para cá.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="prose" style="margin-top:24px">
-      <p><strong>Sobre o prazo de 01/01/2027:</strong> não dá para ter motor de crédito maduro no dia em que a CBS entra em vigor, partindo de repositório vazio hoje. E não precisa. O primeiro trimestre de 2027 é quando as empresas descobrem, na prática, que estão perdendo crédito — chegar em fevereiro com a ferramenta pronta é melhor timing comercial do que chegar em dezembro com ela não testada.</p>
+      <p>Custo estimado de terceiros no primeiro ano: na casa de <strong>R$ 500 a R$ 1.500 por mês</strong> nos volumes iniciais, quase todo variável por CNPJ e por documento. É caro por cliente no começo e ridiculamente barato comparado ao trimestre de engenharia que substitui — e o repasse é direto na precificação.</p>
     </div>
   </section>
 
-  <!-- ============ 8. MODELO ============ -->
+  <!-- ============ 8. EXECUÇÃO SOLO ============ -->
   <section>
     <div class="sec-head">
-      <span class="eyebrow">08 · Negócio</span>
-      <h2>Preço e canal</h2>
+      <span class="eyebrow">08 · Execução</span>
+      <h2>Sozinho, o MVP não é um ERP</h2>
     </div>
     <div class="prose">
-      <p>Três faixas por CNPJ, com teto de documentos processados no mês: <strong>R$ 249</strong> (micro, até 200 documentos), <strong>R$ 699</strong> (pequena, até 1.000, com motor de crédito) e <strong>R$ 1.490</strong> (média, ilimitado, multi-CNPJ, API). Posiciona abaixo do Omie e acima do Nibo, com uma capacidade que nenhum dos dois entrega.</p>
-      <p>Módulo adicional de <strong>auditoria de crédito</strong> cobrado por êxito sobre o valor recuperado — é o modelo que as assessorias de recuperação tributária já usam e que o mercado aceita, e alinha o preço ao valor entregue de forma verificável.</p>
-      <p>Canal: <strong>contadores e BPOs financeiros</strong>. Foi o que construiu o Nibo e é o único caminho de aquisição viável sem capital de venda. O contador ganha a ferramenta de conferência que ele não tem e um cliente que para de mandar caixa de sapato; nós ganhamos distribuição. Isso implica um requisito de produto desde a Fase 1: <strong>visão multi-empresa e exportação para os sistemas contábeis</strong>.</p>
+      <p>O roadmap de quatro fases da versão anterior deste documento assumia dois a três desenvolvedores. Com um, ele não fecha — e forçá-lo produz um ERP genérico pela metade competindo com o Conta Azul em preço, que é exatamente a briga que a tese existe para evitar.</p>
+      <p>A saída não é cortar 30% de cada módulo. É <strong>inverter a ordem</strong>: em vez de construir o ERP e depois adicionar crédito, entregar primeiro a peça que ninguém tem, sozinha, e deixar o financeiro crescer em volta dela quando os primeiros clientes pedirem.</p>
+      <div class="callout">
+        <span class="eyebrow">O primeiro produto</span>
+        <p style="font-family:'IBM Plex Serif',serif;font-size:var(--step-2);line-height:1.35;color:var(--ink)">Radar de Crédito</p>
+        <p>O contador conecta o CNPJ do cliente. Em minutos, uma tela: todas as notas de entrada do período, quanto de CBS e IBS foi destacado, quanto <em>deveria</em> ter sido, e quanto de crédito está em risco por documento malformado — com o fornecedor, o valor e o motivo. Uma tela, uma resposta em reais, nenhuma migração de sistema.</p>
+      </div>
+      <p>É demonstrável em trinta segundos numa reunião, o contador entende sem treinamento, e o valor aparece antes da assinatura. Um ERP não consegue nenhuma dessas três coisas.</p>
+    </div>
+
+    <div class="phases" style="margin-top:28px">
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="pn">v0 · fundação</span>
+          <span class="pd">set — out / 2026</span>
+          <span class="pg">3 semanas</span>
+        </div>
+        <div>
+          <h4>Encanamento</h4>
+          <ul>
+            <li>Next.js, Postgres gerenciado, autenticação, modelo multi-empresa desde o primeiro dia (o comprador é escritório contábil)</li>
+            <li>Contrato com o agregador fiscal; ingestão de DF-e de um CNPJ real ponta a ponta</li>
+            <li>Parser do leiaute NF-e com o grupo UB da NT 2025.002 e cofre documental com hash</li>
+            <li><strong>Pronto quando:</strong> três meses de notas de entrada de uma empresa real entram sozinhas e ficam consultáveis</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="pn">v1 · lançamento</span>
+          <span class="pd">out — nov / 2026</span>
+          <span class="pg">5 semanas</span>
+        </div>
+        <div>
+          <h4>Radar de Crédito no ar</h4>
+          <ul>
+            <li>Validador de destaque IBS/CBS: campo ausente, CST incoerente, alíquota fora da faixa, base que não fecha</li>
+            <li>Tela única de crédito em risco, em reais, por fornecedor e por documento</li>
+            <li>Painel de carteira para o escritório contábil: todos os CNPJs, ordenados por valor em risco</li>
+            <li>Exportação em planilha — o formato que o contador realmente usa hoje</li>
+            <li><strong>Pronto quando:</strong> três escritórios usando em produção com clientes reais, pagando ou em piloto formal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="pn">v2 · profundidade</span>
+          <span class="pd">dez / 2026 — mar / 2027</span>
+          <span class="pg">14 semanas</span>
+        </div>
+        <div>
+          <h4>De relatório a rotina</h4>
+          <ul>
+            <li>Classificação de creditamento item a item com citação legal — gera, não gera, parcial, a confirmar</li>
+            <li>IA para NFS-e fora do padrão, comprovantes e boletos, com fila de exceção</li>
+            <li>Cobrança automática de reemissão ao fornecedor e placar de conformidade</li>
+            <li>Simulador Simples puro versus híbrido, mirando a janela de <strong>março de 2027</strong></li>
+            <li><strong>Pronto quando:</strong> um cliente consegue apontar, em reais, crédito que teria perdido sem a ferramenta</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta">
+          <span class="pn">v3 · o ERP</span>
+          <span class="pd">abr / 2027 em diante</span>
+          <span class="pg">puxado por cliente</span>
+        </div>
+        <div>
+          <h4>O financeiro cresce em volta</h4>
+          <ul>
+            <li>Contas a pagar e receber geradas a partir do documento já capturado</li>
+            <li>Conciliação bancária via Open Finance; fluxo de caixa com a retenção do split payment embutida</li>
+            <li>Apuração-sombra de CBS e diff contra a apuração assistida</li>
+            <li><strong>Só construir o que cliente pagante pedir.</strong> A esta altura há receita para contratar o segundo dev, e é isso que destrava esta fase.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:28px">
+      <h3>Duas coisas que não dá para melhorar em produção</h3>
+      <p>"Lançar e melhorar em produção" é a postura certa para quase tudo aqui — e é a única viável sozinho. Duas exceções, porque o erro não é reversível:</p>
+      <p><strong>Custódia de certificado digital.</strong> Um vazamento de A1 permite emitir documento fiscal em nome do cliente. Não é bug, é fim de empresa. É precisamente por isso que o agregador entra na v0: o risco sai do nosso perímetro antes do primeiro cliente, não depois.</p>
+      <p><strong>Responsabilidade sobre classificação fiscal.</strong> Na v1 e na v2, o sistema <em>aponta</em> e o contador <em>decide</em> — cada achado vem com o documento, o campo e o dispositivo legal, e nada é aplicado sozinho na apuração de ninguém. Isso é posicionamento e é contrato, e precisa estar escrito antes do primeiro cliente pagante. Automação plena de lançamento é uma conquista da v3, quando houver histórico de acerto medido para sustentá-la.</p>
+      <h3>O que fica fora, explicitamente</h3>
+      <p>Emissão de documento fiscal, estoque, produção, folha, contabilidade societária completa e integração com marketplace. Nenhum deles entra em 2027. Quando o cliente pedir, a resposta é integrar com o sistema que ele já tem — e essa resposta é uma vantagem de venda, não uma desculpa: não exigimos que ele troque de ERP para começar.</p>
     </div>
   </section>
 
-  <!-- ============ 9. RISCOS ============ -->
+  <!-- ============ 9. MODELO ============ -->
   <section>
     <div class="sec-head">
-      <span class="eyebrow">09 · Riscos</span>
+      <span class="eyebrow">09 · Negócio</span>
+      <h2>Preço para vender ao escritório, não à empresa</h2>
+    </div>
+    <div class="prose">
+      <p>O comprador é o escritório contábil, e ele compra por CNPJ na carteira — não por assinatura de ERP. Isso simplifica muito a precificação de um produto solo: <strong>R$ 79 por CNPJ monitorado por mês</strong>, com degraus de volume a partir de 20 e de 50 CNPJs, e um piso de carteira que torne o contrato administrável. Um escritório médio com 40 clientes fecha em torno de R$ 2 a 3 mil por mês, e são <em>dez</em> contratos desses para o projeto se sustentar sozinho.</p>
+      <p>O custo variável de terceiros entra direto nessa conta e mantém a margem previsível — não há o risco clássico de vender assinatura fixa com custo de consumo aberto.</p>
+      <p>Fica de fora, por ora, a cobrança por êxito sobre crédito recuperado: é o modelo das assessorias tributárias e o mercado aceita, mas exige apurar e defender o valor recuperado, o que é operação de gente, não de software. Reavaliar quando houver time.</p>
+      <p>Aquisição sem verba de mídia: os escritórios que atendem empresas de serviço no Simples e no Presumido são um universo pequeno e acessível por conteúdo técnico direto sobre as datas deste documento. <strong>A janela de março de 2027</strong> — segunda oportunidade de opção pelo regime híbrido — é o gancho comercial mais concreto do calendário, e a v2 está planejada para chegar nela com o simulador pronto.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10. RISCOS ============ -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">10 · Riscos</span>
       <h2>O que pode dar errado</h2>
     </div>
     <div class="risks">
@@ -746,8 +811,13 @@
       </div>
       <div class="risk">
         <span class="sev alta">Alta</span>
-        <span class="r">Custódia de certificado digital</span>
-        <span class="m">Um vazamento de certificado A1 permite emitir documento fiscal em nome do cliente. É risco existencial, não incidente. Mitigação: isolamento do serviço de assinatura, chave em KMS, auditoria de todo uso, e revisão de segurança independente antes do beta aberto.</span>
+        <span class="r">Dependência do agregador fiscal</span>
+        <span class="m">Terceirizar a custódia do A1 elimina o risco existencial de segurança e cria um de fornecedor: preço, cobertura e disponibilidade passam a ser de outro. Mitigação: isolar a integração atrás de uma interface própria desde a v0, para que trocar de agregador seja trabalho de dias e não de meses, e manter o XML bruto no nosso cofre — o dado é nosso, o encanamento é alugado.</span>
+      </div>
+      <div class="risk">
+        <span class="sev media">Média</span>
+        <span class="r">Ser um dev só</span>
+        <span class="m">Férias, doença ou um mês ruim param o produto inteiro, e o suporte compete diretamente com o desenvolvimento. Mitigação: escopo pequeno de propósito, tudo gerenciado, e a primeira contratação amarrada à receita da v2 — não a uma rodada.</span>
       </div>
       <div class="risk">
         <span class="sev media">Média</span>
@@ -767,29 +837,34 @@
     </div>
   </section>
 
-  <!-- ============ 10. DECISÕES ============ -->
+  <!-- ============ 11. DECISÕES ============ -->
   <section>
     <div class="sec-head">
-      <span class="eyebrow">10 · Antes de escrever a primeira linha</span>
-      <h2>Decisões que mudam o plano</h2>
+      <span class="eyebrow">11 · Decisões travadas</span>
+      <h2>O que já está resolvido, e o que isso custa</h2>
+      <p class="prose" style="margin-top:4px">Toda escolha fecha uma porta. Registrar qual, para que a decisão possa ser revisitada depois com honestidade.</p>
     </div>
     <div class="decisions">
       <div class="dec">
-        <q>Qual é o cliente do primeiro ano?</q>
-        <p>Serviços no Simples e Lucro Presumido é o caminho mais rápido — documento mais simples, dor de crédito mais nova. Comércio e indústria têm crédito mais gordo, mas exigem tratar estoque e ICMS-ST na transição. A escolha muda metade do backlog da Fase 2.</p>
+        <q>Serviços, Simples e Lucro Presumido</q>
+        <p>Documento fiscal mais simples, NFS-e convergindo para o padrão nacional, dor de crédito nova. <strong>Custo da escolha:</strong> o crédito por cliente é menor que em comércio e indústria, então o valor demonstrável por CNPJ é mais modesto — o discurso de venda precisa apoiar-se em risco evitado e em tempo do contador, não só em dinheiro recuperado.</p>
       </div>
       <div class="dec">
-        <q>Vendemos para a empresa ou para o contador?</q>
-        <p>São produtos diferentes com a mesma base. O contador precisa de multi-empresa, lote e exportação desde o primeiro dia; o empresário precisa de simplicidade e caixa. Dá para servir os dois, mas não para priorizar os dois.</p>
+        <q>Contador e BPO como canal</q>
+        <p>Distribuição sem capital de venda, e um comprador que entende o problema sem ser educado. <strong>Custo da escolha:</strong> multi-empresa, operação em lote e exportação para planilha deixam de ser da Fase 3 e passam a ser requisito da v1.</p>
       </div>
       <div class="dec">
-        <q>Qual o time e o capital disponível?</q>
-        <p>O plano acima assume dois a três desenvolvedores e um tributarista de meio período. Com uma pessoa só, a Fase 1 vira o produto inteiro de 2027 e o motor de crédito precisa encolher para validação de destaque apenas.</p>
+        <q>Só leitura e crédito</q>
+        <p>Escopo afiado e, principalmente, convivência: o cliente não precisa trocar de ERP para começar. <strong>Custo da escolha:</strong> ficamos fora do orçamento de "sistema de gestão" e disputamos uma linha nova. Em compensação, não disputamos com Omie e Conta Azul de frente.</p>
       </div>
       <div class="dec">
-        <q>Emitimos documento fiscal ou só lemos?</q>
-        <p>Emitir NF-e e NFS-e é tabela de entrada para competir com Omie e Conta Azul, mas é um módulo inteiro de homologação e suporte. Começar só com leitura e crédito é mais afiado — e permite conviver com o ERP que o cliente já tem em vez de exigir a troca.</p>
+        <q>Um dev, lançar cedo</q>
+        <p>Reordena o produto inteiro: o Radar de Crédito sai antes do ERP, e o ERP só é construído sob demanda de cliente pagante. <strong>Custo da escolha:</strong> nada de ERP completo em 2027, e a segunda contratação é o gargalo declarado da v3.</p>
       </div>
+    </div>
+    <div class="prose" style="margin-top:28px">
+      <h3>O que falta decidir antes da v0</h3>
+      <p>Duas coisas, e as duas são de dias, não de semanas: <strong>qual agregador fiscal</strong> — comparar cobertura de NFS-e, preço por CNPJ e qualidade de sandbox entre PlugNotas, Focus NF-e e Nuvem Fiscal, com um teste real de ingestão em cada um antes de assinar; e <strong>quais três escritórios contábeis</strong> são os parceiros do piloto, conversados agora, antes de existir código, porque são eles que dizem se a tela do Radar responde à pergunta certa.</p>
     </div>
   </section>
 
@@ -820,6 +895,6 @@
   </section>
 
   <footer>
-    Planejamento preliminar · 13 de setembro de 2026 · Nenhum código escrito até aprovação do escopo. Este documento reflete a legislação e o cronograma vigentes na data acima; a regulamentação da reforma segue em evolução ativa.
+Planejamento · revisão 2, com o escopo travado · 13 de setembro de 2026 · Nenhum código escrito até aprovação do escopo. Este documento reflete a legislação e o cronograma vigentes na data acima; a regulamentação da reforma segue em evolução ativa.
   </footer>
 </div>
