@@ -1,0 +1,486 @@
+<title>Nexus em Outubro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap">
+<style>
+  :root{
+    --paper:#F2F5F1; --surface:#FFFFFF; --surface-2:#E9EEE8;
+    --ink:#15211D; --ink-2:#3C4C46; --muted:#6B7A72;
+    --line:#D2DBD3; --line-strong:#B3C0B6;
+    --accent:#0F6B4F; --accent-soft:#DFEDE5;
+    --alert:#A8331B; --alert-soft:#F6E3DE;
+    --warn:#8A5D06; --warn-soft:#F5EAD2;
+    --step--1:.8125rem; --step-0:1rem; --step-1:1.1875rem;
+    --step-2:1.5rem; --step-3:2rem; --step-4:2.75rem;
+    --measure:68ch; --wide:1080px;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0D1411; --surface:#141E1A; --surface-2:#1B2722;
+      --ink:#E4EDE7; --ink-2:#B4C3BB; --muted:#87988E;
+      --line:#26332D; --line-strong:#3A4A42;
+      --accent:#47A67F; --accent-soft:#122B22;
+      --alert:#E08065; --alert-soft:#2E1811;
+      --warn:#D9A63C; --warn-soft:#2B2110;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0D1411; --surface:#141E1A; --surface-2:#1B2722;
+    --ink:#E4EDE7; --ink-2:#B4C3BB; --muted:#87988E;
+    --line:#26332D; --line-strong:#3A4A42;
+    --accent:#47A67F; --accent-soft:#122B22;
+    --alert:#E08065; --alert-soft:#2E1811;
+    --warn:#D9A63C; --warn-soft:#2B2110;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .page{max-width:var(--wide);margin:0 auto;padding-inline:24px;padding-block:0 72px}
+  @media (max-width:520px){.page{padding-inline:18px}}
+  h1,h2,h3,h4{font-family:"IBM Plex Serif",Georgia,serif;text-wrap:balance;line-height:1.2;margin:0}
+  p{margin:0}
+  a{color:var(--accent)}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+  .masthead{border-bottom:2px solid var(--ink);padding-block:40px 22px;display:flex;flex-direction:column;gap:18px}
+  .masthead-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .wordmark{font-size:var(--step-4);font-weight:700;letter-spacing:-.02em}
+  .wordmark span{color:var(--accent)}
+  .lede{font-size:var(--step-1);color:var(--ink-2);max-width:62ch}
+  .stamp{font-family:"IBM Plex Mono",monospace;font-size:var(--step--1);color:var(--alert);border:1.5px solid var(--alert);padding:5px 10px;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-1.5deg);white-space:nowrap}
+
+  .clock{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border:1px solid var(--line);background:var(--surface);margin-block:28px;overflow:hidden}
+  .clock div{padding:16px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+  .clock div:last-child{border-right:0}
+  .clock .d{font-family:"IBM Plex Mono",monospace;font-size:var(--step-1);font-weight:600;font-variant-numeric:tabular-nums}
+  .clock .l{font-size:var(--step--1);color:var(--muted);line-height:1.4}
+  .clock .now .d{color:var(--alert)}
+
+  section{padding-block:48px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+  .sec-head h2{font-size:var(--step-3);letter-spacing:-.015em}
+  .prose{max-width:var(--measure);display:flex;flex-direction:column;gap:16px;color:var(--ink-2)}
+  .prose strong{color:var(--ink);font-weight:600}
+  h3{font-size:var(--step-2);margin-top:8px;letter-spacing:-.01em}
+  h4{font-size:var(--step-1);font-family:"IBM Plex Sans",sans-serif;font-weight:600}
+  ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;background:var(--line);border:1px solid var(--line);margin-block:8px 24px}
+  .stat{background:var(--surface);padding:20px 18px;display:flex;flex-direction:column;gap:4px}
+  .stat .n{font-family:"IBM Plex Mono",monospace;font-size:var(--step-3);font-weight:600;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+  .stat .t{font-size:var(--step--1);color:var(--ink-2);line-height:1.45}
+  .stat.hot .n{color:var(--alert)}
+
+  .scroller{overflow-x:auto;border:1px solid var(--line);background:var(--surface);margin-top:8px}
+  table{border-collapse:collapse;width:100%;min-width:660px;font-size:calc(var(--step-0)*.94)}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{font-family:"IBM Plex Mono",monospace;font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--surface-2);border-bottom:1px solid var(--line-strong)}
+  tbody tr:last-child td{border-bottom:0}
+  td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+  th.num{text-align:right}
+  td.us{background:var(--accent-soft)}
+  tr.total td{border-top:2px solid var(--line-strong);font-weight:600;color:var(--ink)}
+
+  figure{margin:0;display:flex;flex-direction:column;gap:10px}
+  figcaption{font-size:var(--step--1);color:var(--muted);max-width:var(--measure)}
+  .diagram{border:1px solid var(--line);background:var(--surface);padding:8px;overflow-x:auto}
+  .diagram svg{display:block;width:100%;min-width:620px;height:auto}
+
+  .weeks{display:flex;flex-direction:column;gap:2px;background:var(--line);border:1px solid var(--line)}
+  .week{background:var(--surface);padding:20px 22px;display:grid;grid-template-columns:150px 1fr;gap:22px}
+  .week-meta{display:flex;flex-direction:column;gap:4px}
+  .week-meta .wn{font-family:"IBM Plex Mono",monospace;font-size:var(--step--1);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .week-meta .wd{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums;font-size:calc(var(--step-0)*.95)}
+  .week h4{font-family:"IBM Plex Serif",serif;font-size:var(--step-1);font-weight:600;margin-bottom:8px}
+  .week ul{color:var(--ink-2);font-size:calc(var(--step-0)*.94);gap:5px}
+  @media (max-width:640px){.week{grid-template-columns:1fr;gap:10px}}
+
+  .chat{border:1px solid var(--line);background:var(--surface-2);padding:18px;display:flex;flex-direction:column;gap:10px;max-width:440px}
+  .bub{padding:10px 13px;font-size:calc(var(--step-0)*.94);line-height:1.5;max-width:88%;border:1px solid var(--line-strong)}
+  .bub.them{background:var(--surface);align-self:flex-start;color:var(--ink)}
+  .bub.us{background:var(--accent-soft);align-self:flex-end;color:var(--ink);border-color:var(--accent)}
+  .bub .who{display:block;font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+
+  .risks{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .risk{display:grid;grid-template-columns:110px 1fr 1fr;gap:20px;padding-block:16px;border-bottom:1px solid var(--line);align-items:start}
+  .sev{font-family:"IBM Plex Mono",monospace;font-size:var(--step--1);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;justify-self:start}
+  .sev.alta{background:var(--alert-soft);color:var(--alert)}
+  .sev.media{background:var(--warn-soft);color:var(--warn)}
+  .risk .r{color:var(--ink);font-weight:500}
+  .risk .m{color:var(--ink-2);font-size:calc(var(--step-0)*.95)}
+  @media (max-width:680px){.risk{grid-template-columns:1fr;gap:6px}}
+
+  .callout{border:1px solid var(--line-strong);border-left:4px solid var(--accent);background:var(--surface);padding:20px 22px;display:flex;flex-direction:column;gap:8px;max-width:var(--measure)}
+  .callout .eyebrow{color:var(--accent)}
+  .callout.warn{border-left-color:var(--alert)}
+  .callout.warn .eyebrow{color:var(--alert)}
+
+  .cut{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:8px}
+  .cut div{border:1px dashed var(--line-strong);padding:12px 14px;font-size:calc(var(--step-0)*.93);color:var(--muted)}
+  .cut div b{display:block;color:var(--ink-2);font-weight:600;font-size:var(--step-0)}
+
+  .sources{display:flex;flex-direction:column;gap:8px;font-size:var(--step--1);color:var(--muted)}
+  .sources a{text-decoration:none;border-bottom:1px solid var(--line-strong)}
+  .sources a:hover{border-bottom-color:var(--accent)}
+  footer{border-top:2px solid var(--ink);padding-block:24px;font-size:var(--step--1);color:var(--muted)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="wordmark">Nexus em <span>Outubro</span></div>
+      <div class="stamp">Revisão 3 · escopo de lançamento</div>
+    </div>
+    <p class="lede">Metade dos pequenos negócios brasileiros controla dinheiro em caderno, planilha ou nada. Um produto que lança a despesa sozinho e diz ao dono quanto imposto ele está pagando a mais — no ar em seis semanas.</p>
+  </header>
+
+  <div class="clock">
+    <div class="now"><span class="d">13/09/2026</span><span class="l">Hoje. Repositório vazio, um desenvolvedor</span></div>
+    <div><span class="d">6 semanas</span><span class="l">Tudo que existe entre hoje e o lançamento</span></div>
+    <div><span class="d">31/10/2026</span><span class="l">No ar, com usuário pagante ou piloto formal</span></div>
+    <div><span class="d">2027</span><span class="l">Reforma tributária — fora do escopo agora, mas é por isso que capturar começa já</span></div>
+  </div>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">01 · A lacuna</span>
+      <h2>O problema é anterior ao ERP</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="n">30%</span><span class="t">controlam as finanças em planilha</span></div>
+      <div class="stat"><span class="n">25%</span><span class="t">ainda usam caderno</span></div>
+      <div class="stat"><span class="n">20%</span><span class="t">usam algum app ou sistema</span></div>
+      <div class="stat hot"><span class="n">10%</span><span class="t">não fazem controle nenhum</span></div>
+      <div class="stat hot"><span class="n">61%</span><span class="t">pagam contas da empresa pela conta pessoal</span></div>
+    </div>
+    <div class="prose">
+      <p>Os números são da pesquisa de Hábitos Financeiros dos Pequenos Negócios do Sebrae. Três quartos desse público não tem sistema nenhum — e a parcela que mistura conta pessoal com a da empresa ficou praticamente parada entre 2023 e 2025, na casa dos 61%. Quase 60% das empresas brasileiras fecham nos primeiros cinco anos, e a fragilidade na gestão financeira aparece de forma consistente entre as causas.</p>
+      <p>Esse dado de 61% não é uma estatística de contexto. <strong>É a especificação do produto.</strong> Todo sistema de gestão existente assume que a empresa tem conta separada, plano de contas e alguém que digita. Esse público não tem nenhuma das três coisas — e é exatamente por isso que continua no caderno depois de vinte anos de ERP em nuvem: os produtos pedem, como pré-requisito, a organização que o cliente esperava receber deles.</p>
+      <div class="callout">
+        <span class="eyebrow">A inversão</span>
+        <p>Não pedir que ele separe as contas antes de usar. <strong>Ler a bagunça como ela é</strong> — a conta pessoal onde a empresa paga fornecedor, o Pix no meio do supermercado — e devolver separado, categorizado e somado. A organização é a entrega, não o requisito de entrada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">02 · Realidade competitiva</span>
+      <h2>A parte que você não vai gostar</h2>
+    </div>
+    <div class="prose">
+      <p>Antes de detalhar o produto, o achado desconfortável da pesquisa: <strong>"mandar foto do recibo no WhatsApp e a IA lançar a despesa" já existe, e não em um produto — em pelo menos seis.</strong> Financinha, ZapGastos, Poupa.ai, MeuControle.IA, Focca-AI, FinAI. Todos com IA, foto, áudio, categorização automática. Vários com plano gratuito.</p>
+      <p>E na camada de baixo, os bancos digitais dão gestão financeira <em>de graça</em> junto da conta PJ: Cora, InfinitePay, Asaas, Stone. Para quem já é cliente, o controle básico vem embutido no custo zero.</p>
+      <p>Isso não mata a ideia. Mata uma versão dela. Se o produto for "bot de WhatsApp que lança despesa", ele nasce commodity, sem barreira de entrada, competindo contra grátis. Mas os dois grupos têm buracos precisos, e os buracos são o mesmo:</p>
+      <ul>
+        <li><strong>Os bots de WhatsApp são de finanças pessoais.</strong> Não sabem o que é CNPJ, Simples Nacional, pró-labore ou DAS. Categorizam "Alimentação" e "Transporte", não "dedutível" e "pró-labore".</li>
+        <li><strong>Os bancos só enxergam a própria conta.</strong> É estruturalmente impossível para o Cora ver o gasto da empresa que aconteceu no Nubank pessoal do dono — e é lá que está a maior parte, segundo os 61%.</li>
+      </ul>
+      <p>Sobra um espaço que nenhum dos dois ocupa, e é estreito o bastante para um dev só defender: <strong>o controle financeiro que entende que aquilo ali é uma pessoa jurídica</strong> — que separa pessoal de empresa dentro da mesma conta bagunçada, e que transforma o resultado numa decisão tributária concreta.</p>
+      <div class="callout warn">
+        <span class="eyebrow">Discordância registrada</span>
+        <p>Você descreveu a simulação de tributos como algo que vem "de quebra". Eu inverteria: <strong>a simulação é a única parte que os concorrentes não conseguem copiar barato</strong>, e o lançamento automático é a commodity que dá acesso ao dado. Se um dos dois tiver que sair do escopo de outubro, que saia o refinamento do lançamento — nunca a simulação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">03 · Produto</span>
+      <h2>Três momentos, nenhuma tela obrigatória</h2>
+    </div>
+    <div class="prose" style="margin-bottom:24px">
+      <p>O público não abre app de gestão. Abre WhatsApp. Então o produto mora lá, e o site existe para quem quiser olhar o mês inteiro — não para operar o dia a dia.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:start">
+      <div class="chat">
+        <div class="bub them"><span class="who">Dono · 14:07</span>📎 <em>foto do comprovante</em></div>
+        <div class="bub us"><span class="who">Nexus</span>Lancei: <strong>Posto Shell, R$ 180,00</strong> · Combustível · empresa.<br>Setembro: R$ 4.312 em despesas da empresa.</div>
+        <div class="bub them"><span class="who">Dono · 19:41</span>paguei 350 de material pro cliente hoje</div>
+        <div class="bub us"><span class="who">Nexus</span>Lancei R$ 350,00 em Materiais. Foi para o cliente <strong>Construtora Lima</strong>, como das outras vezes?</div>
+      </div>
+      <div class="prose" style="gap:14px">
+        <h4 style="margin:0">Momento 1 — lançar sem pensar</h4>
+        <p>Foto, texto, áudio ou PDF encaminhado. Sem app, sem categoria para escolher, sem campo obrigatório. A resposta confirma o que foi entendido e mostra o acumulado do mês — o cliente descobre o total sem nunca ter pedido um relatório.</p>
+        <h4 style="margin:0">Momento 2 — separar a bagunça</h4>
+        <p>O extrato entra (arquivo do banco, no começo) e cada transação é classificada em <strong>empresa</strong> ou <strong>pessoal</strong>, com o motivo. As dúvidas viram uma pergunta só, no WhatsApp, uma vez por semana — nunca uma fila de 200 itens para revisar.</p>
+        <h4 style="margin:0">Momento 3 — a conta que ninguém fez</h4>
+        <p>Com receita e retiradas na base, o sistema calcula a única coisa que o dono nunca calculou sozinho: <strong>se ele está no anexo errado do Simples</strong>. É aqui que a assinatura se paga, e é a próxima seção.</p>
+      </div>
+    </div>
+
+    <figure style="margin-top:36px">
+      <div class="diagram">
+        <svg viewBox="0 0 860 220" role="img" aria-label="Fluxo: mensagem no WhatsApp, extração, classificação empresa ou pessoal, lançamento e resposta imediata">
+          <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+          <g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="var(--muted)">
+            <text x="12" y="20">ENTRADA</text><text x="204" y="20">EXTRAÇÃO</text><text x="392" y="20">DECISÃO</text><text x="600" y="20">SAÍDA</text>
+          </g>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="var(--ink)">
+            <rect x="12" y="34" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="53">foto · texto · áudio</text>
+            <rect x="12" y="70" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="89">PDF encaminhado</text>
+            <rect x="12" y="106" width="150" height="30" fill="var(--surface-2)" stroke="var(--line-strong)"/><text x="24" y="125">extrato OFX · CSV</text>
+          </g>
+          <g stroke="var(--line-strong)" stroke-width="1.2" fill="none" marker-end="url(#a2)" color="var(--line-strong)">
+            <path d="M162,49 C182,49 182,85 198,85"/><path d="M162,85 L198,85"/><path d="M162,121 C182,121 182,85 198,85"/>
+          </g>
+          <rect x="200" y="56" width="160" height="58" fill="var(--accent-soft)" stroke="var(--accent)"/>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="var(--ink)">
+            <text x="212" y="76">Visão + LLM</text>
+            <text x="212" y="94" font-size="10.5" fill="var(--muted)">valor, data, fornecedor</text>
+            <text x="212" y="108" font-size="10.5" fill="var(--muted)">+ grau de certeza</text>
+          </g>
+          <g stroke="var(--line-strong)" stroke-width="1.2" fill="none" marker-end="url(#a2)" color="var(--line-strong)"><path d="M360,85 L386,85"/></g>
+          <rect x="388" y="46" width="172" height="78" fill="var(--surface-2)" stroke="var(--line-strong)"/>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="11" fill="var(--ink)">
+            <text x="400" y="66">empresa ou pessoal?</text>
+            <text x="400" y="84" font-size="10.5" fill="var(--muted)">histórico do fornecedor</text>
+            <text x="400" y="99" font-size="10.5" fill="var(--muted)">padrão de valor e horário</text>
+            <text x="400" y="114" font-size="10.5" fill="var(--muted)">categoria fiscal</text>
+          </g>
+          <g stroke="var(--line-strong)" stroke-width="1.2" fill="none" marker-end="url(#a2)" color="var(--line-strong)">
+            <path d="M560,68 C580,68 580,50 596,50"/><path d="M560,104 C580,104 580,128 596,128"/>
+          </g>
+          <rect x="598" y="30" width="150" height="40" fill="var(--accent)" stroke="var(--accent)"/>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="11.5"><text x="610" y="48" fill="#FFFFFF" font-weight="600">Lançado na hora</text><text x="610" y="63" fill="#FFFFFF" font-size="10" opacity=".9">resposta em segundos</text></g>
+          <rect x="598" y="108" width="150" height="40" fill="var(--warn-soft)" stroke="var(--warn)"/>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="11.5"><text x="610" y="126" fill="var(--ink)" font-weight="600">Uma pergunta</text><text x="610" y="141" fill="var(--muted)" font-size="10">agrupada, 1x por semana</text></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--muted)"><text x="566" y="42">certeza alta</text><text x="562" y="160">dúvida</text></g>
+          <line x1="12" y1="182" x2="848" y2="182" stroke="var(--line)"/>
+          <text x="12" y="204" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="var(--muted)">A régua do produto: se a dúvida vira fila de revisão, o cliente volta para o caderno. Perguntar pouco é requisito, não refinamento.</text>
+        </svg>
+      </div>
+    </figure>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">04 · O gancho</span>
+      <h2>Fator R: a economia que cabe em 2026</h2>
+      <p class="prose" style="margin-top:4px">Você pediu para não amarrar na reforma de 2027. Certo — e existe uma conta que vale muito dinheiro e já vale hoje.</p>
+    </div>
+    <div class="prose">
+      <p>Empresas de serviço no Simples Nacional são tributadas pelo <strong>Anexo V</strong> ou pelo <strong>Anexo III</strong>, e o que decide é o Fator R: a folha de salários dos últimos 12 meses dividida pela receita bruta do mesmo período. Se der 28% ou mais, a empresa cai no Anexo III. Na primeira faixa, a diferença é <strong>de 15,5% para 6,0%</strong>.</p>
+      <p>E o pró-labore do sócio entra na folha. Ou seja: para boa parte das empresas de TI, design, consultoria, engenharia, publicidade e arquitetura, existe uma decisão legal, ao alcance do dono, que muda a alíquota pela metade — e que depende de conhecer dois números que ele não acompanha.</p>
+      <h3>Exemplo ilustrativo</h3>
+      <p>Consultoria de TI, receita de R$ 15.000 por mês, pró-labore de R$ 2.000.</p>
+      <div class="scroller">
+        <table>
+          <thead><tr><th>Situação</th><th class="num">Folha 12m</th><th class="num">Fator R</th><th class="num">Anexo</th><th class="num">DAS no ano</th></tr></thead>
+          <tbody>
+            <tr><td>Como está hoje</td><td class="num">R$ 24.000</td><td class="num">13,3%</td><td class="num">V · 15,5%</td><td class="num">R$ 27.900</td></tr>
+            <tr class="us"><td class="us">Pró-labore a R$ 4.200</td><td class="num us">R$ 50.400</td><td class="num us">28,0%</td><td class="num us">III · 6,0%</td><td class="num us">R$ 10.800</td></tr>
+            <tr class="total"><td>Diferença no DAS</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">R$ 17.100</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O aumento de pró-labore não é despesa nova: é dinheiro que o sócio já retirava, mudando de forma. O custo real adicional é o INSS de 11% sobre a parcela nova, cerca de R$ 2.900 no ano — que ainda retorna como tempo de contribuição —, mais o IRPF conforme a faixa. <strong>Sobram algo em torno de R$ 12 a 14 mil por ano</strong>, numa empresa que fatura R$ 180 mil.</p>
+      <div class="callout">
+        <span class="eyebrow">Por que isso vende</span>
+        <p>É um número em reais, calculado a partir de dados que o produto já tem, exibido antes de o cliente pagar qualquer coisa. Nenhum bot de finanças pessoais consegue fazer essa conta, e nenhum banco digital vai querer fazer. E uma assinatura de R$ 39 por mês contra R$ 12 mil por ano de economia é uma conversa que não precisa de vendedor.</p>
+      </div>
+      <p><strong>Limites, ditos com clareza no produto:</strong> vale só para os CNAEs sujeitos ao Fator R; o cálculo usa 12 meses móveis e muda mês a mês; e a decisão final é do contador da empresa. O sistema apresenta a oportunidade e o cálculo — <em>não</em> executa a mudança nem substitui o contador. Essa fronteira precisa estar escrita na tela, não só no contrato.</p>
+      <p>Duas simulações vizinhas, mais baratas de construir, entram depois: <strong>Simples versus Lucro Presumido</strong> para quem está perto do limite de faixa, e <strong>segregação de receita monofásica</strong> de PIS e COFINS para quem revende bebidas, autopeças, cosméticos ou medicamentos — dinheiro parado clássico no varejo pequeno.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">05 · Escopo</span>
+      <h2>Seis semanas, contadas de trás para frente</h2>
+    </div>
+    <div class="weeks">
+      <div class="week">
+        <div class="week-meta"><span class="wn">Semana 1–2</span><span class="wd">15 — 28 / set</span></div>
+        <div>
+          <h4>O cano principal</h4>
+          <ul>
+            <li>WhatsApp Cloud API com webhook, identidade do usuário pelo número de telefone — sem tela de cadastro</li>
+            <li>Recebimento de texto, imagem, áudio e PDF; extração com visão e saída tipada; grau de certeza propagado</li>
+            <li>Postgres gerenciado, modelo de lançamento e de empresa</li>
+            <li><strong>Pronto quando:</strong> você manda a foto de um recibo e ela vira lançamento com resposta em menos de dez segundos</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Semana 3</span><span class="wd">29 / set — 5 / out</span></div>
+        <div>
+          <h4>Empresa ou pessoal</h4>
+          <ul>
+            <li>Classificador com memória de fornecedor — acertou uma vez, acerta sempre</li>
+            <li>Categorias fiscais em vez de categorias de finanças pessoais</li>
+            <li>Agrupamento de dúvidas numa pergunta semanal, com limite rígido de itens</li>
+            <li>Importação de extrato por arquivo (OFX e CSV), com deduplicação contra o que já entrou pelo WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Semana 4</span><span class="wd">6 — 12 / out</span></div>
+        <div>
+          <h4>O painel do mês</h4>
+          <ul>
+            <li>Web, leitura primeiro: entradas, saídas, saldo, top categorias, top fornecedores</li>
+            <li>Edição e exclusão de lançamento — a única escrita necessária na v1</li>
+            <li>Fechamento mensal enviado por WhatsApp no dia 1º</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Semana 5</span><span class="wd">13 — 19 / out</span></div>
+        <div>
+          <h4>Fator R</h4>
+          <ul>
+            <li>Entrada de receita e de retiradas dos 12 meses, com atalho para quem não tem histórico no sistema</li>
+            <li>Cálculo, comparação de anexos e o número em reais</li>
+            <li>Tabela de CNAEs sujeitos ao Fator R e avisos de limite bem visíveis</li>
+            <li>Relatório compartilhável — é o que o dono manda para o contador dele, e é o nosso canal de aquisição de graça</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-meta"><span class="wn">Semana 6</span><span class="wd">20 — 31 / out</span></div>
+        <div>
+          <h4>Cobrar e abrir</h4>
+          <ul>
+            <li>Assinatura e cobrança recorrente por Pix e cartão; teste grátis por tempo, não por volume</li>
+            <li>Telemetria do que importa: tempo até o primeiro lançamento, taxa de acerto da classificação, retenção na segunda semana</li>
+            <li>Página de entrada e 10 a 20 usuários reais, recrutados à mão</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:28px">
+      <h3>O que fica de fora, sem negociação</h3>
+    </div>
+    <div class="cut">
+      <div><b>Open Finance</b>Custo fixo alto antes de haver receita. Extrato por arquivo resolve a v1.</div>
+      <div><b>Emissão de nota</b>Homologação e suporte contínuo. Não entra em 2026.</div>
+      <div><b>Certificado digital</b>Risco de custódia sem contrapartida nesta fase.</div>
+      <div><b>Contas a pagar e agendamento</b>Vira produto de fluxo, não de registro. Depois.</div>
+      <div><b>Multiusuário e permissões</b>O cliente é uma pessoa só. Literalmente.</div>
+      <div><b>Estoque, folha, NF-e de entrada</b>Nada disso é o problema de quem está no caderno.</div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">06 · Stack e custo</span>
+      <h2>O que custa rodar isso</h2>
+    </div>
+    <div class="prose">
+      <p><strong>WhatsApp Cloud API, direto da Meta.</strong> Desde janeiro de 2026 a cobrança é por mensagem, e a boa notícia é estrutural para este produto: a conversa é sempre iniciada pelo cliente, e as respostas dentro da janela de 24 horas são mensagens de serviço. O custo real fica nas mensagens proativas — o fechamento do mês, o lembrete de DAS — cobradas como utilitárias, na casa de alguns centavos por mensagem. As tabelas públicas divergem bastante entre si, de R$ 0,06 a R$ 0,21; <strong>confirmar na fatura do primeiro mês</strong> antes de prometer qualquer margem.</p>
+      <p><strong>Open Finance fica para a v2, e o motivo é preço.</strong> Pluggy em torno de R$ 2.500 por mês, Belvo por volta de R$ 6.000, TecnoSpeed com entrada de R$ 1.500 mais R$ 540 mensais. É custo fixo alto antes do primeiro real de receita, e ainda adiciona um fluxo de consentimento no onboarding — justamente onde este público desiste. Existem revendas cobrando por conta conectada, na faixa de R$ 20, e é esse formato que faz sentido quando entrar: custo que sobe junto com a receita, não antes dela.</p>
+      <p><strong>O resto é deliberadamente chato.</strong> Next.js na Vercel, Postgres gerenciado, fila gerenciada, storage compatível com S3 para os originais. Nada de Kubernetes, nada de plantão.</p>
+      <p><strong>LLM:</strong> modelo com visão para extrair o documento, modelo barato para triagem e para a conversa. Na ordem de grandeza de 100 documentos por usuário no mês, o custo por assinante fica em poucos reais — confortável dentro de R$ 39, desde que haja teto de uso e proteção contra abuso desde o primeiro dia.</p>
+      <p><strong>Uma regra de arquitetura que não custa nada agora e vale muito depois:</strong> guardar o documento original e o texto bruto extraído, sempre, além do lançamento estruturado. Reprocessar o passado com um modelo melhor — ou com regras fiscais que ainda nem existem — só é possível se o original estiver lá.</p>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">07 · Preço</span>
+      <h2>R$ 39 por mês, e por que não é de graça</h2>
+    </div>
+    <div class="prose">
+      <p>Preço único, <strong>R$ 39 por mês ou R$ 390 no ano</strong>, com teste grátis de 14 dias. Sem plano gratuito permanente: cada documento processado tem custo de modelo, e plano grátis num produto de IA com um dev só é como se financia o próprio fechamento.</p>
+      <p>A âncora não é o concorrente — é o que o cliente já paga. Contabilidade online começa acima de R$ 150 por mês. Um ERP de PME começa em R$ 166 e vai a R$ 1.800. Hoje ele paga zero e usa caderno. R$ 39 é a faixa em que a decisão não precisa passar por planilha de comparação.</p>
+      <p>O relatório de Fator R é o que quebra a objeção do preço: quando o número aparece em reais, a assinatura deixa de ser custo e vira a coisa mais barata da tela.</p>
+      <p><strong>Aquisição sem verba:</strong> o relatório compartilhável é o veículo. O dono manda para o contador; o contador vê a conta pronta, bem-feita e com o dispositivo citado. Alguns vão querer para a carteira inteira — e aí o canal contábil, que era a hipótese da revisão anterior deste documento, volta pela porta de trás, validado por uso em vez de por reunião comercial.</p>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">08 · Riscos</span>
+      <h2>O que pode dar errado</h2>
+    </div>
+    <div class="risks">
+      <div class="risk">
+        <span class="sev alta">Alta</span>
+        <span class="r">Seis semanas é pouco, e escopo cresce sozinho</span>
+        <span class="m">O cronograma só fecha se nada entrar. A regra: qualquer ideia nova vai para a lista da v2 sem discussão até 31 de outubro. Se a semana 5 atrasar, corta o painel web — não o Fator R, que é a única parte insubstituível.</span>
+      </div>
+      <div class="risk">
+        <span class="sev alta">Alta</span>
+        <span class="r">Conselho tributário errado</span>
+        <span class="m">Dizer a alguém para mudar o pró-labore com base num CNAE mal lido causa dano real. Mitigação: o produto apresenta cálculo e fonte, nunca instrução; os CNAEs sujeitos ao Fator R vêm de lista curada e revisada, não do modelo; e a tela diz, com todas as letras, que a mudança passa pelo contador.</span>
+      </div>
+      <div class="risk">
+        <span class="sev alta">Alta</span>
+        <span class="r">Commoditização pelo bot de WhatsApp</span>
+        <span class="m">Seis concorrentes já fazem lançamento por foto, alguns de graça. Se ficarmos parados na paridade, perdemos. A defesa é ir mais fundo em PJ — separação pessoal e empresa, categoria fiscal, decisão tributária — não competir em conveniência de chat.</span>
+      </div>
+      <div class="risk">
+        <span class="sev media">Média</span>
+        <span class="r">Classificação errada corrói a confiança rápido</span>
+        <span class="m">Errar "empresa versus pessoal" é pior que não classificar. Mitigação: memória por fornecedor, correção em uma palavra na conversa, e limite rígido de perguntas por semana. Medir taxa de acerto desde o primeiro usuário — é a métrica de produto, não o número de lançamentos.</span>
+      </div>
+      <div class="risk">
+        <span class="sev media">Média</span>
+        <span class="r">Dependência de plataforma</span>
+        <span class="m">Meta muda preço e política do WhatsApp com frequência, e já mudou o modelo de cobrança em janeiro de 2026. Mitigação: manter a lógica fora da camada de mensageria desde o começo, para que Telegram, SMS ou app próprio sejam troca de adaptador.</span>
+      </div>
+      <div class="risk">
+        <span class="sev media">Média</span>
+        <span class="r">Dados financeiros pessoais e LGPD</span>
+        <span class="m">O produto lê a conta pessoal do dono por definição. Exige base legal clara, consentimento explícito, retenção declarada e exclusão funcionando de verdade. É trabalho de dias na v1 e semanas se for deixado para depois.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">09 · Horizonte</span>
+      <h2>Por que a reforma continua no documento</h2>
+    </div>
+    <div class="prose">
+      <p>Fora do escopo de outubro, e a decisão está certa: em 2026 a reforma não move a agulha de quem controla dinheiro em caderno, e amarrar o lançamento nela seria trocar um problema urgente por um problema futuro.</p>
+      <p>Mas há uma razão concreta para ela continuar aqui. A partir de janeiro de 2027, a CBS entra em vigor plena e o crédito passa a depender do destaque correto no documento que o <em>fornecedor</em> emitiu. Quem tiver, naquele momento, <strong>quinze meses de despesas já capturadas, categorizadas e com o documento original guardado</strong>, tem a base pronta para o motor de crédito. Quem começar a capturar em 2027 vai olhar para trás e não encontrar nada.</p>
+      <p>Isso não muda uma linha do plano de outubro. Muda uma decisão de arquitetura, já registrada na seção de stack: <strong>guardar o original e o texto bruto, sempre</strong>. É barato hoje e impossível de recuperar depois.</p>
+      <p>O planejamento completo da tese da reforma — cronograma, motor de crédito, apuração-sombra, análise competitiva de Omie, Conta Azul e Nibo — está preservado no histórico do repositório, na revisão 2 deste documento. Quando o produto tiver base instalada e receita, ele volta para a mesa.</p>
+    </div>
+  </section>
+
+  <!-- fontes -->
+  <section>
+    <div class="sec-head"><span class="eyebrow">Fontes</span><h2>Pesquisa de base</h2></div>
+    <div class="sources">
+      <a href="https://sebraepr.com.br/impulsiona/habitosfinanceiro2025/">Sebrae — Hábitos Financeiros dos Pequenos Negócios 2025</a>
+      <a href="https://agenciasebrae.com.br/cultura-empreendedora/61-dos-empreendedores-brasileiros-fazem-pagamentos-da-empresa-com-a-conta-pessoal/">Agência Sebrae — 61% pagam contas da empresa com a conta pessoal</a>
+      <a href="https://www.tribunadosertao.com.br/geral/2026/05/05/896731-mortalidade-empresarial-no-brasil-expoe-falhas-estruturais-de-gestao">Mortalidade empresarial e falhas estruturais de gestão</a>
+      <a href="https://contabilidade.com/blog/fator-r-no-simples-nacional-2026-como-calcular-exemplos-praticos-e-quando-servicos-migram-do-anexo-v-para-o-iii/">Fator R 2026 — cálculo e migração do Anexo V para o III</a>
+      <a href="https://valorfinal.com.br/tabela-fator-r">Tabela Fator R 2026 — Anexo III versus Anexo V</a>
+      <a href="https://www.e-auditoria.com.br/blog/fator-r-sistemas-e-recuperacao-tributaria-no-simples-nacional-onde-os-escritorios-mais-erram/">Fator R — onde os escritórios mais erram</a>
+      <a href="https://www.financinha.com.br/">Financinha — assistente financeiro no WhatsApp</a>
+      <a href="https://zapgastos.com/">ZapGastos — assistente financeiro no WhatsApp</a>
+      <a href="https://poupa.ai/en">Poupa.ai — assistente financeiro no WhatsApp</a>
+      <a href="https://www.infinitepay.io/blog/conta-digital-mei">Comparativo de contas digitais para MEI em 2026</a>
+      <a href="https://runzos.com/asaas-vs-cora-conta-digital-pj/">Asaas versus Cora — contas digitais PJ</a>
+      <a href="https://www.tabnews.com.br/GuilhermeVieira/estou-desenvolvendo-um-app-de-financas-pessoais-e-nao-consigo-pagar-o-open-finance-pluggy-r2-5k-mes-belvo-r6k-mes-tecnospeed-r1-5k-de-entrada-r540">Custo real de Open Finance para quem está começando</a>
+      <a href="https://www.socialhub.pro/blog/preco-whatsapp-api-2026-brasil/">Preço da WhatsApp Business API no Brasil em 2026</a>
+      <a href="https://blog.geekacademy.site/blog/whatsapp-business-api-custo-brasil">Tabela de custo da WhatsApp Business API</a>
+    </div>
+  </section>
+
+  <footer>
+    Revisão 3 · 13 de setembro de 2026 · Nenhum código escrito. Valores de terceiros e tabelas tributárias citados são de fontes públicas na data acima e devem ser confirmados na contratação. O exemplo de Fator R é ilustrativo e não constitui orientação tributária.
+  </footer>
+</div>
